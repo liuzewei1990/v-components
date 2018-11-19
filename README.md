@@ -1,4 +1,6 @@
-# v-actionsheet
+# v-components
+
+[DEMO](http://htmlpreview.github.io/?https://github.com/liuzewei1990/v-components/blob/master/index.html)
 
 > A Vue.js project
 

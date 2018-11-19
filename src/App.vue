@@ -20,6 +20,8 @@
     <button @click="showActionsheet3=true">show android</button>
     <actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></actionsheet>
 
+    <button @click="showToast">show toast</button>
+
   </div>
 </template>
 
@@ -88,9 +90,12 @@ export default {
     }
   },
     methods:{
-    clickMenu(v){
-      console.log(v)
-    }
+      clickMenu(v){
+        console.log(v)
+      },
+      showToast(){
+        this.$toast("更新成功")
+      }
   }
 }
 </script>

@@ -32,17 +32,17 @@
       <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
     </cell>
     <cell title="请上传头像" :topLine="true" desc="" :isLink="true">
-      <img slot="desc" width="50" src="./assets/default_user_header.png" alt="">
+      <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
     </cell>
     <cell title="请选择地址" :topLine="true" desc="北京市-北京市-朝阳区" :isLink="true">
-      <img slot="icon" width="25" src="./assets/no_address.png" alt="">
+      <img slot="icon" width="25" :src="require('./assets/no_address.png')" alt="">
     </cell>
     <cell title="匿名用户" :topLine="true" :borderLine="true" desc="2018-11-19">
-      <img slot="icon" width="30" style="margin-right:10px;" src="./assets/default_user_header.png" alt="">
+      <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/default_user_header.png')" alt="">
     </cell>
     <cell title="匿名用户" :topLine="true" :borderLine="true" desc="我是描述" :isLink="true">
-      <img slot="icon" width="30" style="margin-right:10px;" src="./assets/default_user_header.png" alt="">
-      <img slot="desc" width="50" src="./assets/default_user_header.png" alt="">
+      <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/no_address.png')" alt="">
+      <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
     </cell>
   </div>
 </template>

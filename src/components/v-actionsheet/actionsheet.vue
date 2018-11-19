@@ -173,7 +173,7 @@ export default {
     position: relative;
     padding: 10px 0;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
      &:before {
         content: " ";
         position: absolute;

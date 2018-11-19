@@ -37,7 +37,7 @@ ToastConstructor.prototype.close = function () {
 };
 
 let Toast = (options = {}) => {
-    let duration = options.duration || 5000000;
+    let duration = options.duration || 2000;
     let instance = getAnInstance();
     instance.closed = false;
     clearTimeout(instance.timer);

@@ -21,6 +21,10 @@
     <actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></actionsheet>
 
     <button @click="showToast">show toast</button>
+    <button @click="iosAlert">show iosAlert</button>
+    <button @click="iosConfirm">show iosConfirm</button>
+    <button @click="iosPrompt">show iosPrompt</button>
+    <button @click="iosRemind">show iosRemind</button>
 
   </div>
 </template>
@@ -95,7 +99,57 @@ export default {
       },
       showToast(){
         this.$toast("更新成功")
-      }
+      },
+      iosAlert(){
+        this.$iosAlert({
+            title: "提示",
+            text: "确认退出？",
+            input: false,
+            placeholder: '',
+            cancelText: '取消',
+            okText: '确认',
+            remindDuration: 650,
+            appendChildClass: "",
+        })
+      },
+      iosConfirm(){
+          this.$iosConfirm({
+            title: "提示",
+            text: "确认退出？",
+            input: false,
+            placeholder: '',
+            cancelText: '取消',
+            okText: '确认',
+            remindDuration: 650,
+            appendChildClass: "",
+        })
+      },
+      iosPrompt(){
+          this.$iosPrompt({
+            title: "提示",
+            text: "请输入关闭原因",
+            input: false,
+            placeholder: '',
+            cancelText: '取消',
+            okText: '确认',
+            remindDuration: 650,
+            appendChildClass: "",
+        }).then(()=>{
+          this.iosRemind();
+        })
+      },
+      iosRemind(){
+        this.$iosRemind({
+            title: "提示",
+            text: "订单已关闭",
+            input: false,
+            placeholder: '',
+            cancelText: '取消',
+            okText: '确认',
+            remindDuration: 650,
+            appendChildClass: "",
+        })
+      },
   }
 }
 </script>

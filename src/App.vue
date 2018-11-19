@@ -26,14 +26,33 @@
     <button @click="iosPrompt">show iosPrompt</button>
     <button @click="iosRemind">show iosRemind</button>
 
+    <cell title="我是cell" :topLine="true" style="text-align:center;"></cell>
+    <cell title="请选择" :topLine="true" desc="我是描述"></cell>
+    <cell title="请选择" :topLine="true">
+      <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
+    </cell>
+    <cell title="请上传头像" :topLine="true" desc="" :isLink="true">
+      <img slot="desc" width="50" src="./assets/default_user_header.png" alt="">
+    </cell>
+    <cell title="请选择地址" :topLine="true" desc="北京市-北京市-朝阳区" :isLink="true">
+      <img slot="icon" width="25" src="./assets/no_address.png" alt="">
+    </cell>
+    <cell title="匿名用户" :topLine="true" :borderLine="true" desc="2018-11-19">
+      <img slot="icon" width="30" style="margin-right:10px;" src="./assets/default_user_header.png" alt="">
+    </cell>
+    <cell title="匿名用户" :topLine="true" :borderLine="true" desc="我是描述" :isLink="true">
+      <img slot="icon" width="30" style="margin-right:10px;" src="./assets/default_user_header.png" alt="">
+      <img slot="desc" width="50" src="./assets/default_user_header.png" alt="">
+    </cell>
   </div>
 </template>
 
 <script>
 import actionsheet from "./components/v-actionsheet/actionsheet";
+import cell from "./components/v-cell";
 export default {
   name: 'app',
-  components:{actionsheet},
+  components:{actionsheet,cell},
   data () {
     return {
       
@@ -159,7 +178,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }

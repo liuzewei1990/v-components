@@ -6,9 +6,9 @@
             <slot name="icon">
                 <img :src="icon" alt="">
             </slot>
-            <sup v-if="badge">
+            <!-- <sup v-if="badge">
                 <Badge :text="badge"></Badge>
-            </sup>
+            </sup> -->
         </div>
         <p v-if="hasLabelSlot || label" class="weui-grid__label">
             <slot name="label">
@@ -20,13 +20,10 @@
 </template>
 
 <script>
-// import { go } from '../../libs/router'
 
-import Badge from '../badge'
 export default {
     name: 'grid-item',
-    props: ['icon', 'label', 'link', 'badge'],
-    components: { Badge },
+    props: ['icon', 'label'],
     created() {
         this.$parent.countColumn()
     },
@@ -59,7 +56,6 @@ export default {
     methods: {
         onClick() {
             this.$emit('on-item-click')
-            // go(this.link, this.$router)
         }
     },
     data() {
@@ -72,10 +68,74 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+@import './border-1px.less';
+
+
+
 .weui-grid.vux-grid-item-no-border {
   &:before {
     display: none;
   }
 }
+
+.weui-grid {
+    position: relative;
+    float: left;
+    padding: 5px;
+    box-sizing: border-box;
+    color: #000;
+    text-decoration: none;
+
+    &:before {
+        .setRightLine(#ccc);
+    }
+    &:after {
+        .setBottomLine(#ccc);
+    }
+
+    &:active {
+        background-color: rgb(233, 233, 233);
+    }
+}
+
+.weui-grid__icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    & + .weui-grid__label{
+        margin-top: 5px;
+    }
+
+    sup{
+        position: absolute;
+        top: 0px;
+        left: 80%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: 101;
+    }
+}
+
+.weui-grid__label {
+    margin: 0;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    // color: #222;
+    // font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 </style>

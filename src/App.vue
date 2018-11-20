@@ -9,12 +9,12 @@
 
     <button @click="showActionsheet1=true">show ios header show-cancel</button>
     <Actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu">
-        <p slot="header" style="text-align:center;">请选择</p>
+        <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
     </Actionsheet>
 
     <button @click="showActionsheet2=true">show android header</button>
     <Actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu">
-      <p slot="header" style="text-align:center;">请选择</p>
+      <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
     </Actionsheet>
 
     <button @click="showActionsheet3=true">show android</button>
@@ -93,6 +93,14 @@
         <CheckerItem v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
     </Checker>
 
+
+    <Cell title="Grid组件" :borderLine="true" :topLine="true" style="text-align:center; margin:20px 0;"></Cell>
+    <Grid :no-border="false" :show-lr-borders="true" :show-vertical-dividers="true" :cols="3">
+        <GridItem :label="item.name" :icon="item.iconUrl" v-for="(item,index) in gridList" :key="index">
+            <!-- <img slot="icon" :src="item.iconUrl"> -->
+        </GridItem>
+    </Grid>
+
   </div>
 </template>
 
@@ -102,9 +110,10 @@ import Cell from "./components/v-Cell";
 import Button from "./components/v-button";
 import Badge from "./components/v-badge";
 import {Checker, CheckerItem} from "./components/v-checker";
+import {Grid, GridItem} from "./components/v-grid";
 export default {
   name: 'app',
-  components:{Actionsheet,Cell,Button,Badge,Checker, CheckerItem},
+  components:{Actionsheet,Cell,Button,Badge,Checker,CheckerItem,Grid,GridItem},
   data () {
     return {
       
@@ -203,7 +212,45 @@ export default {
             value:"西瓜",
           },
         ]
-      }
+      },
+      gridList:[
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+        {
+          name:"苹果",
+          iconUrl:"https://weui.io/images/icon_tabbar.png"
+        },
+      ]
     }
   },
     methods:{
@@ -291,7 +338,7 @@ li {
   margin: 0 10px;
 }
 
-p{
+.actionsheet-header{
   color: #fff;
   background: #ff5d5d;
   margin: 0;

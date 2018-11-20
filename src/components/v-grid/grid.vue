@@ -57,13 +57,25 @@ export default {
   }
 }
 </script>
-<style lang="less">
-@import './weui-grid.less';
+<style lang="less" scoped>
+@import './border-1px.less';
 
 .weui-grids.vux-grid-no-lr-borders {
   &:after {
     display: none;
   }
+}
+
+.weui-grids {
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        .setTopLine(#ccc);
+    }
+    &:after {
+        .setLeftLine(#ccc);
+    }
 }
 
 .no-border{

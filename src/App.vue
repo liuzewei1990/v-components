@@ -20,6 +20,23 @@
         <button @click="showActionsheet3=true">show android</button>
         <Actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></Actionsheet>
 
+        <button @click="showPopup1=true">show bottom Popup</button>
+        <Popup v-model="showPopup1" position="bottom" height="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+            <p>内容</p>
+        </Popup>
+        <button @click="showPopup2=true">show top Popup</button>
+        <Popup v-model="showPopup2" position="top" height="40px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+            <p>内容</p>
+        </Popup>
+        <button @click="showPopup3=true">show left Popup</button>
+        <Popup v-model="showPopup3" position="left" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+            <p>内容</p>
+        </Popup>
+        <button @click="showPopup4=true">show right Popup</button>
+        <Popup v-model="showPopup4" position="right" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+            <p>内容</p>
+        </Popup>
+
         <button @click="showToast">show toast</button>
         <button @click="iosAlert">show iosAlert</button>
         <button @click="iosConfirm">show iosConfirm</button>
@@ -104,9 +121,10 @@ import Button from "./components/v-button";
 import Badge from "./components/v-badge";
 import { Checker, CheckerItem } from "./components/v-checker";
 import { Grid, GridItem } from "./components/v-grid";
+import Popup from "./components/v-popup";
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup },
     data() {
         return {
 
@@ -114,6 +132,11 @@ export default {
             showActionsheet1: false,
             showActionsheet2: false,
             showActionsheet3: false,
+            showPopup1: false,
+            showPopup2: false,
+            showPopup3: false,
+            showPopup4: false,
+            showPopup5: false,
             menus: {
                 "1": '男',
                 "2": '女'

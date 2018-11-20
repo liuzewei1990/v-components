@@ -4,21 +4,21 @@
     <h2>Essential Links</h2>
 
     <button @click="showActionsheet=true">show ios</button>
-    <actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu">
-    </actionsheet>
+    <Actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu">
+    </Actionsheet>
 
     <button @click="showActionsheet1=true">show ios header show-cancel</button>
-    <actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu">
+    <Actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu">
         <p slot="header" style="text-align:center;">请选择</p>
-    </actionsheet>
+    </Actionsheet>
 
     <button @click="showActionsheet2=true">show android header</button>
-    <actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu">
+    <Actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu">
       <p slot="header" style="text-align:center;">请选择</p>
-    </actionsheet>
+    </Actionsheet>
 
     <button @click="showActionsheet3=true">show android</button>
-    <actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></actionsheet>
+    <Actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></Actionsheet>
 
 
     <button @click="showToast">show toast</button>
@@ -28,83 +28,83 @@
     <button @click="iosRemind">show iosRemind</button>
 
 
-    <cell title="cell组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
-    <cell title="请选择" :topLine="true" desc="我是描述"></cell>
-    <cell title="请选择" :topLine="true">
+    <Cell title="Cell组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+    <Cell title="请选择" :topLine="true" desc="我是描述"></Cell>
+    <Cell title="请选择" :topLine="true">
       <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
-    </cell>
-    <cell title="请上传头像" :topLine="true" desc="" :isLink="true">
+    </Cell>
+    <Cell title="请上传头像" :topLine="true" desc="" :isLink="true">
       <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
-    </cell>
-    <cell title="请选择地址" :topLine="true" desc="北京市-北京市-朝阳区" :isLink="true">
+    </Cell>
+    <Cell title="请选择地址" :topLine="true" desc="北京市-北京市-朝阳区" :isLink="true">
       <img slot="icon" width="25" :src="require('./assets/no_address.png')" alt="">
-    </cell>
-    <cell title="匿名用户" :topLine="true" :borderLine="true" desc="2018-11-19">
+    </Cell>
+    <Cell title="匿名用户" :topLine="true" :borderLine="true" desc="2018-11-19">
       <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/default_user_header.png')" alt="">
-    </cell>
-    <cell title="匿名用户" :topLine="true" :borderLine="true" desc="我是描述" :isLink="true">
+    </Cell>
+    <Cell title="匿名用户" :topLine="true" :borderLine="true" desc="我是描述" :isLink="true">
       <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/no_address.png')" alt="">
       <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
-    </cell>
+    </Cell>
 
 
 
-    <cell title="button组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
-    <v-button type="default" mini>mini</v-button>
-    <v-button type="default" mini recta>mini</v-button>
-    <v-button type="default">default</v-button>
-    <v-button type="default" :disabled="true" :show-loading="true">禁用</v-button>
-    <v-button type="default" recta>default</v-button>
-    <v-button type="default" plain>default</v-button>
+    <Cell title="Button组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+    <Button type="default" mini>mini</Button>
+    <Button type="default" mini recta>mini</Button>
+    <Button type="default">default</Button>
+    <Button type="default" :disabled="true" :show-loading="true">禁用</Button>
+    <Button type="default" recta>default</Button>
+    <Button type="default" plain>default</Button>
 
-    <v-button type="primary" mini>mini</v-button>
-    <v-button type="primary" mini recta>mini</v-button>
-    <v-button type="primary">primary</v-button>
-    <v-button type="primary" :disabled="true" :show-loading="true">禁用</v-button>
-    <v-button type="primary" recta>primary</v-button>
-    <v-button type="primary" plain>primary</v-button>
+    <Button type="primary" mini>mini</Button>
+    <Button type="primary" mini recta>mini</Button>
+    <Button type="primary">primary</Button>
+    <Button type="primary" :disabled="true" :show-loading="true">禁用</Button>
+    <Button type="primary" recta>primary</Button>
+    <Button type="primary" plain>primary</Button>
 
-    <v-button type="warn" mini>mini</v-button>
-    <v-button type="warn" mini recta>mini</v-button>
-    <v-button type="warn">warn</v-button>
-    <v-button type="warn" :disabled="true" :show-loading="true">禁用</v-button>
-    <v-button type="warn" recta>warn</v-button>
-    <v-button type="warn" plain>warn</v-button>
+    <Button type="warn" mini>mini</Button>
+    <Button type="warn" mini recta>mini</Button>
+    <Button type="warn">warn</Button>
+    <Button type="warn" :disabled="true" :show-loading="true">禁用</Button>
+    <Button type="warn" recta>warn</Button>
+    <Button type="warn" plain>warn</Button>
 
-    <v-button style="border-radius:500px;" plain>border-radius:500px;</v-button>
-
-
-    <cell title="badge徽章组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
-    <badge></badge>
-    <badge text="999999"></badge>
-    <cell title="请选择" :topLine="true" :borderLine="true">
-      <badge slot="desc" text="11"></badge>
-      <badge slot="icon" style="margin-right:10px;" text="New"></badge>
-    </cell>
+    <Button style="border-radius:500px;" plain>border-radius:500px;</Button>
 
 
-    <cell title="checker组件-单选" :desc="radio.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></cell>
-    <checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
-        <checker-item v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</checker-item>
-    </checker>
+    <Cell title="Badge徽章组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+    <Badge></Badge>
+    <Badge text="999999"></Badge>
+    <Cell title="请选择" :topLine="true" :borderLine="true">
+      <Badge slot="desc" text="11"></Badge>
+      <Badge slot="icon" style="margin-right:10px;" text="New"></Badge>
+    </Cell>
 
-    <cell title="checker组件-多选" :desc="checkbox.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></cell>
-    <checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
-        <checker-item v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</checker-item>
-    </checker>
+
+    <Cell title="Checker组件-单选" :desc="radio.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></Cell>
+    <Checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
+        <CheckerItem v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
+    </Checker>
+
+    <Cell title="Checker组件-多选" :desc="checkbox.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></Cell>
+    <Checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
+        <CheckerItem v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
+    </Checker>
 
   </div>
 </template>
 
 <script>
-import actionsheet from "./components/v-actionsheet/actionsheet";
-import cell from "./components/v-cell";
-import button from "./components/v-button";
-import badge from "./components/v-badge";
+import Actionsheet from "./components/v-actionsheet/actionsheet";
+import Cell from "./components/v-Cell";
+import Button from "./components/v-button";
+import Badge from "./components/v-badge";
 import {Checker, CheckerItem} from "./components/v-checker";
 export default {
   name: 'app',
-  components:{actionsheet,cell,"v-button":button,badge,Checker, CheckerItem},
+  components:{Actionsheet,Cell,Button,Badge,Checker, CheckerItem},
   data () {
     return {
       

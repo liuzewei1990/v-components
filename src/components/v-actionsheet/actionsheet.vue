@@ -125,7 +125,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 
 .mask {
     position: fixed;

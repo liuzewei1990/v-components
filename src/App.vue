@@ -28,7 +28,7 @@
     <button @click="iosRemind">show iosRemind</button>
 
 
-    <cell title="cell组件" :topLine="true" style="text-align:center;"></cell>
+    <cell title="cell组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
     <cell title="请选择" :topLine="true" desc="我是描述"></cell>
     <cell title="请选择" :topLine="true">
       <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
@@ -49,7 +49,7 @@
 
 
 
-    <cell title="button组件" :borderLine="true" style="text-align:center;"></cell>
+    <cell title="button组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
     <v-button type="default" mini>mini</v-button>
     <v-button type="default" mini recta>mini</v-button>
     <v-button type="default">default</v-button>
@@ -73,7 +73,14 @@
 
     <v-button style="border-radius:500px;" plain>border-radius:500px;</v-button>
 
-    
+
+    <cell title="badge徽章组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></cell>
+    <badge></badge>
+    <badge text="999999"></badge>
+    <cell title="请选择" :topLine="true" :borderLine="true">
+      <badge slot="desc" text="11"></badge>
+      <badge slot="icon" style="margin-right:10px;" text="New"></badge>
+    </cell>
 
 
   </div>
@@ -83,9 +90,10 @@
 import actionsheet from "./components/v-actionsheet/actionsheet";
 import cell from "./components/v-cell";
 import button from "./components/v-button";
+import badge from "./components/v-badge";
 export default {
   name: 'app',
-  components:{actionsheet,cell,"v-button":button},
+  components:{actionsheet,cell,"v-button":button,badge},
   data () {
     return {
       

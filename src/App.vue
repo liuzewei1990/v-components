@@ -83,7 +83,6 @@
         <Button type="warn" :disabled="true" :show-loading="true">禁用</Button>
         <Button type="warn" recta>warn</Button>
         <Button type="warn" plain>warn</Button>
-
         <Button style="border-radius:500px;" plain>border-radius:500px;</Button>
 
         <Cell title="Badge徽章组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
@@ -98,7 +97,6 @@
         <Checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
         </Checker>
-
         <Cell title="Checker组件-多选" :desc="checkbox.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></Cell>
         <Checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
@@ -111,6 +109,10 @@
             </GridItem>
         </Grid>
 
+        <Cell title="LoadMore组件" :borderLine="true" :topLine="true" style="text-align:center; margin:20px 0;"></Cell>
+        <LoadMore tip="努力加载中" :show-loading="true"></LoadMore>
+        <LoadMore tip="暂无数据" :show-loading="false"></LoadMore>
+        <LoadMore tip="" :show-loading="false"></LoadMore>
     </div>
 </template>
 
@@ -122,9 +124,10 @@ import Badge from "./components/v-badge";
 import { Checker, CheckerItem } from "./components/v-checker";
 import { Grid, GridItem } from "./components/v-grid";
 import Popup from "./components/v-popup";
+import LoadMore from "./components/v-loadMore";
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore },
     data() {
         return {
 

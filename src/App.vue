@@ -83,6 +83,16 @@
     </cell>
 
 
+    <cell title="checker组件-单选" :desc="radio.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></cell>
+    <checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
+        <checker-item v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</checker-item>
+    </checker>
+
+    <cell title="checker组件-多选" :desc="checkbox.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></cell>
+    <checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
+        <checker-item v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</checker-item>
+    </checker>
+
   </div>
 </template>
 
@@ -91,9 +101,10 @@ import actionsheet from "./components/v-actionsheet/actionsheet";
 import cell from "./components/v-cell";
 import button from "./components/v-button";
 import badge from "./components/v-badge";
+import {Checker, CheckerItem} from "./components/v-checker";
 export default {
   name: 'app',
-  components:{actionsheet,cell,"v-button":button,badge},
+  components:{actionsheet,cell,"v-button":button,badge,Checker, CheckerItem},
   data () {
     return {
       
@@ -150,7 +161,49 @@ export default {
           value: '橘子'
         },
       ],
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      radio:{
+        checked:{},
+        valueList:[
+          {
+            value:"苹果",
+          },
+          {
+            value:"香蕉",
+          },
+          {
+            value:"甘蔗",
+          },
+          {
+            value:"柚子",
+            disabled:true,
+          },
+        ]
+      },
+      checkbox:{
+        checked:[],
+        valueList:[
+          {
+            value:"苹果",
+          },
+          {
+            value:"香蕉",
+          },
+          {
+            value:"橘子",
+          },
+          {
+            value:"甘蔗",
+          },
+          {
+            value:"柚子",
+            disabled:true,
+          },
+          {
+            value:"西瓜",
+          },
+        ]
+      }
     }
   },
     methods:{
@@ -244,5 +297,22 @@ p{
   margin: 0;
   line-height: 40px;
   border-bottom: 1px solid #eee;
+}
+
+.checker-item {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  margin:0 2px;
+}
+.checker-item-selected {
+  border: 1px solid green;
+}
+.checker-item-disabled{
+  background: #efefef;
 }
 </style>

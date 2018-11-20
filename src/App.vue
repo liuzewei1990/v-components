@@ -9,16 +9,17 @@
 
     <button @click="showActionsheet1=true">show ios header show-cancel</button>
     <actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu">
-        <p slot="header">请选择</p>
+        <p slot="header" style="text-align:center;">请选择</p>
     </actionsheet>
 
     <button @click="showActionsheet2=true">show android header</button>
     <actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu">
-      <p slot="header">请选择</p>
+      <p slot="header" style="text-align:center;">请选择</p>
     </actionsheet>
 
     <button @click="showActionsheet3=true">show android</button>
     <actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></actionsheet>
+
 
     <button @click="showToast">show toast</button>
     <button @click="iosAlert">show iosAlert</button>
@@ -26,7 +27,8 @@
     <button @click="iosPrompt">show iosPrompt</button>
     <button @click="iosRemind">show iosRemind</button>
 
-    <cell title="我是cell" :topLine="true" style="text-align:center;"></cell>
+
+    <cell title="cell组件" :topLine="true" style="text-align:center;"></cell>
     <cell title="请选择" :topLine="true" desc="我是描述"></cell>
     <cell title="请选择" :topLine="true">
       <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
@@ -44,15 +46,46 @@
       <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/no_address.png')" alt="">
       <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
     </cell>
+
+
+
+    <cell title="button组件" :borderLine="true" style="text-align:center;"></cell>
+    <v-button type="default" mini>mini</v-button>
+    <v-button type="default" mini recta>mini</v-button>
+    <v-button type="default">default</v-button>
+    <v-button type="default" :disabled="true" :show-loading="true">禁用</v-button>
+    <v-button type="default" recta>default</v-button>
+    <v-button type="default" plain>default</v-button>
+
+    <v-button type="primary" mini>mini</v-button>
+    <v-button type="primary" mini recta>mini</v-button>
+    <v-button type="primary">primary</v-button>
+    <v-button type="primary" :disabled="true" :show-loading="true">禁用</v-button>
+    <v-button type="primary" recta>primary</v-button>
+    <v-button type="primary" plain>primary</v-button>
+
+    <v-button type="warn" mini>mini</v-button>
+    <v-button type="warn" mini recta>mini</v-button>
+    <v-button type="warn">warn</v-button>
+    <v-button type="warn" :disabled="true" :show-loading="true">禁用</v-button>
+    <v-button type="warn" recta>warn</v-button>
+    <v-button type="warn" plain>warn</v-button>
+
+    <v-button style="border-radius:500px;" plain>border-radius:500px;</v-button>
+
+    
+
+
   </div>
 </template>
 
 <script>
 import actionsheet from "./components/v-actionsheet/actionsheet";
 import cell from "./components/v-cell";
+import button from "./components/v-button";
 export default {
   name: 'app',
-  components:{actionsheet,cell},
+  components:{actionsheet,cell,"v-button":button},
   data () {
     return {
       
@@ -197,9 +230,6 @@ li {
   margin: 0 10px;
 }
 
-a {
-  color: #42b983;
-}
 p{
   color: #fff;
   background: #ff5d5d;

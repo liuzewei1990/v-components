@@ -135,7 +135,7 @@ export default {
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 @prefixClass: vux-tab;
 @easing-in-out: cubic-bezier(0.35, 0, 0.25, 1);
 @effect-duration: 0.3s;

@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <Header class="header-fix" title="Vue移动端常用组件库" :right-options="{showMore:true}"></Header>
         <h1>{{ msg }}</h1>
         <h2>Essential Links</h2>
 
@@ -212,6 +213,18 @@
                 <Media :pic="IMG_DEMO" :title="item" :desc="item"></Media>
             </SwiperItem>
         </Swiper>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Header组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Header title="个人中心" :left-options="{showBack:false}"></Header>
+        <br>
+        <Header title="个人中心"></Header>
+        <br>
+        <Header title="个人中心" :left-options="{showBack:true,backText:'后退'}">
+            <span slot="right">编辑</span>
+        </Header>
     </div>
 </template>
 
@@ -229,9 +242,10 @@ import Media from "./components/v-media";
 import { Swiper, SwiperItem } from "./components/v-swiper";
 import Goods from "./components/v-goods";
 import { Tab, TabItem } from './components/v-tab';
+import Header from './components/v-header';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -571,5 +585,14 @@ li {
   line-height: 30px;
 }
 .goods-list {
+}
+.header-fix {
+  position: fixed !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #fafafa;
+  zoom: 1;
+  z-index: 1000;
 }
 </style>

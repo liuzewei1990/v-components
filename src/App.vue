@@ -144,6 +144,33 @@
         <br>
         <Cell title="Swiper组件" style="text-align:center;margin-top:50px;"></Cell>
         <Swiper :list="swiperList" height="200px"></Swiper>
+        <br>
+        <br>
+        <Swiper height="100px" dotsPosition="center" :auto="true">
+            <SwiperItem v-for="(item,index) in mediaList" :key="index">
+                <Media :pic="item.imgUrl" :title="item.title" :desc="item.desc"></Media>
+            </SwiperItem>
+        </Swiper>
+        <Swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
+            <SwiperItem>
+                <p>义务爱了 完成传奇世界H5-王者归来任务 获得20金币</p>
+            </SwiperItem>
+            <SwiperItem>
+                <p>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</p>
+            </SwiperItem>
+            <SwiperItem>
+                <p>零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</p>
+            </SwiperItem>
+            <SwiperItem>
+                <p>做迎而為 兑换【饿了么】畅享美食红包 消耗20金币</p>
+            </SwiperItem>
+            <SwiperItem>
+                <p>只知道不知道 兑换【饿了么】畅享美食红包 消耗20金币</p>
+            </SwiperItem>
+            <SwiperItem>
+                <p>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</p>
+            </SwiperItem>
+        </Swiper>
     </div>
 </template>
 
@@ -158,10 +185,10 @@ import { Grid, GridItem } from "./components/v-grid";
 import Popup from "./components/v-popup";
 import LoadMore from "./components/v-loadMore";
 import Media from "./components/v-media";
-import { Swiper } from "./components/v-swiper";
+import { Swiper, SwiperItem } from "./components/v-swiper";
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem },
     data() {
         return {
 
@@ -410,6 +437,11 @@ export default {
   margin-top: 60px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2 {
   font-weight: normal;
@@ -448,5 +480,15 @@ li {
 }
 .checker-item-disabled {
   background: #efefef;
+}
+.text-scroll {
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+.text-scroll p {
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
 }
 </style>

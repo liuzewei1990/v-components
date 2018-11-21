@@ -225,6 +225,20 @@
         <Header title="个人中心" :left-options="{showBack:true,backText:'后退'}">
             <span slot="right">编辑</span>
         </Header>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Number组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Number v-model="number" :min="0" :max="10" :step="2" :fillable="true" width="100px" button-style="square"></Number>
+        <Number v-model="number" :min="0" :max="10" :step="0.2" :fillable="false" width="50px" button-style="round"></Number>
+        <Cell title="购买数量" :topLine="true">
+            <Number slot="desc" v-model="number" :min="0" :max="10" :step="1" :fillable="false" width="50px" button-style="square"></Number>
+        </Cell>
+        <Cell :topLine="true">
+            <span slot="desc">个</span>
+            <Number slot="icon" v-model="number" :min="0" :max="10" :step="1" :fillable="false" width="50px" button-style="square"></Number>
+        </Cell>
     </div>
 </template>
 
@@ -243,9 +257,10 @@ import { Swiper, SwiperItem } from "./components/v-swiper";
 import Goods from "./components/v-goods";
 import { Tab, TabItem } from './components/v-tab';
 import Header from './components/v-header';
+import Number from './components/v-number';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -441,6 +456,7 @@ export default {
             ],
             tabList: ["全部", "待付款", "待发货", "待收货", "待评价"],
             bindTabIndex: 0,
+            number: 0,
         }
     },
     methods: {

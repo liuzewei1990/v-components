@@ -42,8 +42,11 @@
         <button @click="iosConfirm">show iosConfirm</button>
         <button @click="iosPrompt">show iosPrompt</button>
         <button @click="iosRemind">show iosRemind</button>
-
-        <Cell title="Cell组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Cell组件" style="text-align:center;margin-top:50px;"></Cell>
         <Cell title="请选择" :topLine="true" desc="我是描述"></Cell>
         <Cell title="请选择" :topLine="true">
             <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
@@ -61,8 +64,11 @@
             <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/no_address.png')" alt="">
             <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
         </Cell>
-
-        <Cell title="Button组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Button组件" style="text-align:center;margin-top:50px;"></Cell>
         <Button type="default" mini>mini</Button>
         <Button type="default" mini recta>mini</Button>
         <Button type="default">default</Button>
@@ -84,35 +90,54 @@
         <Button type="warn" recta>warn</Button>
         <Button type="warn" plain>warn</Button>
         <Button style="border-radius:500px;" plain>border-radius:500px;</Button>
-
-        <Cell title="Badge徽章组件" :borderLine="true" :topLine="true" style="text-align:center;margin-top:50px;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Badge徽章组件" style="text-align:center;margin-top:50px;"></Cell>
         <Badge></Badge>
         <Badge text="999999"></Badge>
         <Cell title="请选择" :topLine="true" :borderLine="true">
             <Badge slot="desc" text="11"></Badge>
             <Badge slot="icon" style="margin-right:10px;" text="New"></Badge>
         </Cell>
-
-        <Cell title="Checker组件-单选" :desc="radio.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Checker组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Cell title="单选" :desc="radio.checked" style="margin-top:20px;"></Cell>
         <Checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
         </Checker>
-        <Cell title="Checker组件-多选" :desc="checkbox.checked" :borderLine="true" :topLine="true" style="margin-top:20px;"></Cell>
+        <Cell title="多选" :desc="checkbox.checked" style="margin-top:20px;"></Cell>
         <Checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
         </Checker>
-
-        <Cell title="Grid组件" :borderLine="true" :topLine="true" style="text-align:center; margin:20px 0;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Grid组件" style="text-align:center;margin-top:50px;"></Cell>
         <Grid :no-border="false" :show-lr-borders="true" :show-vertical-dividers="true" :cols="3">
             <GridItem :label="item.name" :icon="item.iconUrl" v-for="(item,index) in gridList" :key="index">
                 <!-- <img slot="icon" :src="item.iconUrl"> -->
             </GridItem>
         </Grid>
-
-        <Cell title="LoadMore组件" :borderLine="true" :topLine="true" style="text-align:center; margin:20px 0;"></Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="LoadMore组件" style="text-align:center;margin-top:50px;"></Cell>
         <LoadMore tip="努力加载中" :show-loading="true"></LoadMore>
         <LoadMore tip="暂无数据" :show-loading="false"></LoadMore>
         <LoadMore tip="" :show-loading="false"></LoadMore>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Media组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Media v-for="(item,index) in mediaList" :key="index" :pic="item.imgUrl" :title="item.title" :desc="item.desc"></Media>
     </div>
 </template>
 
@@ -125,9 +150,10 @@ import { Checker, CheckerItem } from "./components/v-checker";
 import { Grid, GridItem } from "./components/v-grid";
 import Popup from "./components/v-popup";
 import LoadMore from "./components/v-loadMore";
+import Media from "./components/v-media";
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media },
     data() {
         return {
 
@@ -268,6 +294,23 @@ export default {
                 {
                     name: "苹果",
                     iconUrl: "https://weui.io/images/icon_tabbar.png"
+                },
+            ],
+            mediaList: [
+                {
+                    imgUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==",
+                    title: "标题一",
+                    desc: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                },
+                {
+                    imgUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==",
+                    title: "标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一",
+                    desc: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状星球有一定的形状星球有一定的形状，有自己的运行轨道。"
+                },
+                {
+                    imgUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==",
+                    title: "标题一",
+                    desc: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
                 },
             ]
         }

@@ -52,17 +52,17 @@
             <span slot="desc" style="color:red;">我是通过slot插槽形式进来的</span>
         </Cell>
         <Cell title="请上传头像" :topLine="true" desc="" :isLink="true">
-            <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
+            <img slot="desc" width="50" style="border-radius:50%;" :src="IMG_DEMO" alt="">
         </Cell>
         <Cell title="请选择地址" :topLine="true" desc="北京市-北京市-朝阳区" :isLink="true">
-            <img slot="icon" width="25" :src="require('./assets/no_address.png')" alt="">
+            <img slot="icon" width="30" style="margin-right:10px;" :src="IMG_DEMO" alt="">
         </Cell>
         <Cell title="匿名用户" :topLine="true" :borderLine="true" desc="2018-11-19">
-            <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/default_user_header.png')" alt="">
+            <img slot="icon" width="30" style="margin-right:10px;" :src="IMG_DEMO" alt="">
         </Cell>
         <Cell title="匿名用户" :topLine="true" :borderLine="true" desc="我是描述" :isLink="true">
-            <img slot="icon" width="30" style="margin-right:10px;" :src="require('./assets/no_address.png')" alt="">
-            <img slot="desc" width="50" :src="require('./assets/default_user_header.png')" alt="">
+            <img slot="icon" width="30" style="margin-right:10px;" :src="IMG_DEMO" alt="">
+            <img slot="desc" width="50" style="border-radius:50%;" :src="IMG_DEMO" alt="">
         </Cell>
         <br>
         <br>
@@ -191,7 +191,7 @@ export default {
     components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem },
     data() {
         return {
-
+            IMG_DEMO: IMG_DEMO,
             showActionsheet: false,
             showActionsheet1: false,
             showActionsheet2: false,
@@ -435,6 +435,8 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 * {

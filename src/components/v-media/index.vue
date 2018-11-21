@@ -19,6 +19,7 @@ export default {
 
 <style lang="less" scoped>
 .v-media-box {
+  background: #fff;
   text-decoration: none;
   color: #000000;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

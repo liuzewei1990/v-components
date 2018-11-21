@@ -97,7 +97,7 @@
         <Cell title="Badge徽章组件" style="text-align:center;margin-top:50px;"></Cell>
         <Badge></Badge>
         <Badge text="999999"></Badge>
-        <Cell title="请选择" :topLine="true" :borderLine="true">
+        <Cell title="请选择" :topLine="true" :borderLine="true" :isLink="true">
             <Badge slot="desc" text="11"></Badge>
             <Badge slot="icon" style="margin-right:10px;" text="New"></Badge>
         </Cell>
@@ -106,11 +106,11 @@
         <br>
         <br>
         <Cell title="Checker组件" style="text-align:center;margin-top:50px;"></Cell>
-        <Cell title="单选" :desc="radio.checked" style="margin-top:20px;"></Cell>
+        <Cell title="单选" :desc="radio.checked"></Cell>
         <Checker v-model="radio.checked" type="radio" :radio-required="true" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in radio.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
         </Checker>
-        <Cell title="多选" :desc="checkbox.checked" style="margin-top:20px;"></Cell>
+        <Cell title="多选" :desc="checkbox.checked"></Cell>
         <Checker v-model="checkbox.checked" type="checkbox" :max="3" default-item-class="checker-item" selected-item-class="checker-item-selected" disabled-item-class="checker-item-disabled">
             <CheckerItem v-for="(_item,i) in checkbox.valueList" :key="i" :value="_item" :disabled="_item.disabled">{{_item.value}}</CheckerItem>
         </Checker>
@@ -145,8 +145,7 @@
         <Cell title="Swiper组件" style="text-align:center;margin-top:50px;"></Cell>
         <Swiper :list="swiperList" height="200px"></Swiper>
         <br>
-        <br>
-        <Swiper height="100px" dotsPosition="center" :auto="true">
+        <Swiper height="90px" dotsPosition="center" :auto="true">
             <SwiperItem v-for="(item,index) in mediaList" :key="index">
                 <Media :pic="item.imgUrl" :title="item.title" :desc="item.desc"></Media>
             </SwiperItem>
@@ -171,6 +170,23 @@
                 <p>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</p>
             </SwiperItem>
         </Swiper>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Goods组件" style="text-align:center;margin-top:50px;"></Cell>
+        <div class="goods-list clearfix">
+            <Goods v-for="(item,index) in goods.slice(0,2)" :key="index" :item="item"></Goods>
+        </div>
+        <div class="goods-list clearfix">
+            <Goods v-for="(item,index) in goods.slice(0,2)" :key="index" :item="item">
+                <Badge slot="badge" style="margin-right:5px;" text="京东物流"></Badge>
+                <Button slot="actionIcon" type="default" mini recta style="margin-right:8px;line-height: 25px;">看相似</Button>
+            </Goods>
+        </div>
+        <div class="goods-list clearfix">
+            <Goods v-for="(item,index) in goods" :key="index" :item="item" :isShowBrief="false" style="width:33.33%;"></Goods>
+        </div>
     </div>
 </template>
 
@@ -186,9 +202,10 @@ import Popup from "./components/v-popup";
 import LoadMore from "./components/v-loadMore";
 import Media from "./components/v-media";
 import { Swiper, SwiperItem } from "./components/v-swiper";
+import Goods from "./components/v-goods";
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -363,6 +380,24 @@ export default {
                     title: "标题3",
                     img: IMG_DEMO,
                 },
+            ],
+            goods: [
+                {
+                    picUrl: "http://img14.360buyimg.com/n7/jfs/t29869/274/250211057/439907/9d333f20/5bece01eN2313d689.jpg!q70.dpg",
+                    name: "博锐剃须刀电动充电式刮胡刀剃胡须刀男士便携往复式刀头水洗博锐PS173 标配+1个刀网（店长推荐",
+                    brief: "男女大盘时尚双显多功能防水防震运动电子潮流男表 黑金GA-110GB-1A",
+                    retailPrice: "88.88"
+                },
+                {
+                    picUrl: "http://img14.360buyimg.com/n7/jfs/t29869/274/250211057/439907/9d333f20/5bece01eN2313d689.jpg!q70.dpg",
+                    name: "博锐剃须刀电动充电式刮胡刀剃胡须刀男士便携往复式刀头水洗博锐PS173 标配+1个刀网（店长推荐",
+                    retailPrice: "88.88"
+                },
+                {
+                    picUrl: "http://img14.360buyimg.com/n7/jfs/t29869/274/250211057/439907/9d333f20/5bece01eN2313d689.jpg!q70.dpg",
+                    name: "博锐剃须刀电动充电式刮胡刀剃胡须刀男士便携往复式刀头水洗博锐PS173 标配+1个刀网（店长推荐",
+                    retailPrice: "88.88"
+                },
             ]
         }
     },
@@ -437,8 +472,20 @@ export default {
   margin-top: 60px;
   padding: 10px;
   box-sizing: border-box;
-}
 
+  background: #f2f2f2;
+}
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
 * {
   margin: 0;
   padding: 0;
@@ -468,6 +515,7 @@ li {
 }
 
 .checker-item {
+  background: #fff;
   width: 40px;
   height: 40px;
   border: 1px solid #ccc;
@@ -478,7 +526,7 @@ li {
   margin: 0 2px;
 }
 .checker-item-selected {
-  border: 1px solid green;
+  border: 1px solid red;
 }
 .checker-item-disabled {
   background: #efefef;
@@ -489,8 +537,11 @@ li {
   border-right: none;
 }
 .text-scroll p {
+  background: #fff;
   font-size: 12px;
   text-align: center;
   line-height: 30px;
+}
+.goods-list {
 }
 </style>

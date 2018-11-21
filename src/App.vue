@@ -187,6 +187,31 @@
         <div class="goods-list clearfix">
             <Goods v-for="(item,index) in goods" :key="index" :item="item" :isShowBrief="false" style="width:33.33%;"></Goods>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="Tab组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Tab class="tabs" :animate="false">
+            <TabItem :selected="index==0" v-for="(item,index) in tabList" :key="index">{{item}}</TabItem>
+        </Tab>
+        <br>
+        <Tab class="tabs" :animate="true" bar-position="top">
+            <TabItem :selected="index==0" v-for="(item,index) in tabList" :key="index">{{item}}</TabItem>
+        </Tab>
+        <br>
+        <Tab class="tabs" :animate="true" :scroll-threshold="5" :line-width="2" bar-active-color="#f230cd" active-color="#f230cd" custom-bar-width="20px">
+            <TabItem :selected="index==0" :disabled="index==3" v-for="(item,index) in tabList" :key="index">{{item}}</TabItem>
+        </Tab>
+        <br>
+        <Tab class="tabs" :animate="true" v-model="bindTabIndex" :scroll-threshold="5" :line-width="2" bar-active-color="#f230cd" active-color="#f230cd" custom-bar-width="20px">
+            <TabItem :selected="index==0" v-for="(item,index) in tabList" :key="index">{{item}}</TabItem>
+        </Tab>
+        <Swiper height="90px" v-model="bindTabIndex" :auto="true" dotsPosition="center">
+            <SwiperItem v-for="(item,index) in tabList" :key="index">
+                <Media :pic="IMG_DEMO" :title="item" :desc="item"></Media>
+            </SwiperItem>
+        </Swiper>
     </div>
 </template>
 
@@ -203,9 +228,10 @@ import LoadMore from "./components/v-loadMore";
 import Media from "./components/v-media";
 import { Swiper, SwiperItem } from "./components/v-swiper";
 import Goods from "./components/v-goods";
+import { Tab, TabItem } from './components/v-tab';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -398,7 +424,9 @@ export default {
                     name: "博锐剃须刀电动充电式刮胡刀剃胡须刀男士便携往复式刀头水洗博锐PS173 标配+1个刀网（店长推荐",
                     retailPrice: "88.88"
                 },
-            ]
+            ],
+            tabList: ["全部", "待付款", "待发货", "待收货", "待评价"],
+            bindTabIndex: 0,
         }
     },
     methods: {

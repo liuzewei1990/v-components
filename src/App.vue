@@ -43,6 +43,11 @@
         <button @click="iosConfirm">show iosConfirm</button>
         <button @click="iosPrompt">show iosPrompt</button>
         <button @click="iosRemind">show iosRemind</button>
+
+        <button @click="showMaskBox">show MaskBox</button>
+        <MaskBox v-model="maskBox" :show-mask="true" :show-loading="maskBoxLoading">
+            <img width="100" :src="IMG_DEMO" alt="">
+        </MaskBox>
         <br>
         <br>
         <br>
@@ -258,9 +263,10 @@ import Goods from "./components/v-goods";
 import { Tab, TabItem } from './components/v-tab';
 import Header from './components/v-header';
 import Number from './components/v-number';
+import MaskBox from './components/v-maskBox';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -273,6 +279,8 @@ export default {
             showPopup3: false,
             showPopup4: false,
             showPopup5: false,
+            maskBox:false,
+            maskBoxLoading:false,
             menus: {
                 "1": '男',
                 "2": '女'
@@ -516,6 +524,12 @@ export default {
                 appendChildClass: "",
             })
         },
+        showMaskBox(){
+            this.maskBox = this.maskBoxLoading = true;
+            setTimeout(() => {
+                this.maskBoxLoading = false;
+            }, 1000);
+        }
     }
 }
 </script>

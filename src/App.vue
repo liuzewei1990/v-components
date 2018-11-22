@@ -26,7 +26,7 @@
             <p>内容</p>
         </Popup>
         <button @click="showPopup2=true">show top Popup</button>
-        <Popup v-model="showPopup2" position="top" height="40px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+        <Popup v-model="showPopup2" position="top" height="140px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
             <p>内容</p>
         </Popup>
         <button @click="showPopup3=true">show left Popup</button>
@@ -259,6 +259,19 @@
         <DateTime ref="DateTime4" type="year" :showTodayButton="false" :value="dateTime4" color='#f6662e' @confirm="dateTimeSelect4"></DateTime>
         <Cell title="月" :desc="dateTime5 || '未设置'" :isLink="true" @click.native="$refs.DateTime5.show()"></Cell>
         <DateTime ref="DateTime5" type="month" :showTodayButton="false" :value="dateTime5" color='#f6662e' @confirm="dateTimeSelect5"></DateTime>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="City组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.City.open()"></Cell>
+        <City :city="cityData" :init-value="defaultCityVal" @confirm="cityConfirm" ref="City"></City>
+
+        <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.CityPopup.open()"></Cell>
+        <CityPopup ref="CityPopup" :selectd-city-val="defaultCityVal2" @confirm="cityConfirm"></CityPopup>
+        
+        <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.CityPopup.open()"></Cell>
+        <CityPopup ref="CityPopup"  @confirm="cityConfirm"></CityPopup>
     </div>
 </template>
 
@@ -280,9 +293,12 @@ import Header from './components/v-header';
 import Number from './components/v-number';
 import MaskBox from './components/v-maskBox';
 import DateTime from 'vue-date-time-m';
+import City from './components/v-city';
+import cityData from './components/v-city/cityData.json';
+import CityPopup from './components/v-cityPopup';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox,DateTime },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox,DateTime,City,CityPopup },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -482,10 +498,32 @@ export default {
             bindTabIndex: 0,
             number: 0,
             dateTime1:"",
-            DateTime2:"",
+            dateTime2:"",
             dateTime3:"",
             dateTime4:"",
             dateTime5:"",
+            cityData:cityData,
+            defaultCityVal: [{
+                name: '北京',
+                value: '110000'
+            }, {
+                name: '北京市',
+                value: '110100'
+            }, {
+                name: '昌平区',
+                value: '110114'
+            }],
+            cityValue:"",
+            defaultCityVal2: [{
+                name: '北京',
+                code: '110000'
+            }, {
+                name: '北京市',
+                code: '110100'
+            }, {
+                name: '昌平区',
+                code: '110114'
+            }],
         }
     },
     methods: {
@@ -566,6 +604,10 @@ export default {
         dateTimeSelect5(val) {
             this.dateTime5 = val;
         },
+        cityConfirm(v){
+            this.cityValue = `${v[0].name}-${v[1].name}-${v[2].name}`;
+            console.log(v)
+        }
     }
 }
 </script>
@@ -659,6 +701,6 @@ li {
   left: 0;
   background: #fafafa;
   zoom: 1;
-  z-index: 1000;
+  z-index: 1;
 }
 </style>

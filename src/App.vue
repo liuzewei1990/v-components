@@ -244,6 +244,21 @@
             <span slot="desc">个</span>
             <Number slot="icon" v-model="number" :min="0" :max="10" :step="1" :fillable="false" width="50px" button-style="square"></Number>
         </Cell>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="DateTime组件" style="text-align:center;margin-top:50px;"></Cell>
+        <Cell title="日期+时间" :desc="dateTime1 || '未设置'" :isLink="true" @click.native="$refs.DateTime1.show()"></Cell>
+        <DateTime ref="DateTime1" type="dateTime" :showTodayButton="false" :value="dateTime1" color='#f6662e' @confirm="dateTimeSelect1"></DateTime>
+        <Cell title="日期" :desc="dateTime2 || '未设置'" :isLink="true" @click.native="$refs.DateTime2.show()"></Cell>
+        <DateTime ref="DateTime2" type="date" :showTodayButton="false" :value="dateTime2" color='#f6662e' @confirm="dateTimeSelect2"></DateTime>
+        <Cell title="时间" :desc="dateTime3 || '未设置'" :isLink="true" @click.native="$refs.DateTime3.show()"></Cell>
+        <DateTime ref="DateTime3" type="time" :showTodayButton="false" :value="dateTime3" color='#f6662e' @confirm="dateTimeSelect3"></DateTime>
+        <Cell title="年" :desc="dateTime4 || '未设置'" :isLink="true" @click.native="$refs.DateTime4.show()"></Cell>
+        <DateTime ref="DateTime4" type="year" :showTodayButton="false" :value="dateTime4" color='#f6662e' @confirm="dateTimeSelect4"></DateTime>
+        <Cell title="月" :desc="dateTime5 || '未设置'" :isLink="true" @click.native="$refs.DateTime5.show()"></Cell>
+        <DateTime ref="DateTime5" type="month" :showTodayButton="false" :value="dateTime5" color='#f6662e' @confirm="dateTimeSelect5"></DateTime>
     </div>
 </template>
 
@@ -264,9 +279,10 @@ import { Tab, TabItem } from './components/v-tab';
 import Header from './components/v-header';
 import Number from './components/v-number';
 import MaskBox from './components/v-maskBox';
+import DateTime from 'vue-date-time-m';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox,DateTime },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -465,6 +481,11 @@ export default {
             tabList: ["全部", "待付款", "待发货", "待收货", "待评价"],
             bindTabIndex: 0,
             number: 0,
+            dateTime1:"",
+            DateTime2:"",
+            dateTime3:"",
+            dateTime4:"",
+            dateTime5:"",
         }
     },
     methods: {
@@ -529,7 +550,22 @@ export default {
             setTimeout(() => {
                 this.maskBoxLoading = false;
             }, 1000);
-        }
+        },
+        dateTimeSelect1(val) {
+            this.dateTime1 = val;
+        },
+        dateTimeSelect2(val) {
+            this.dateTime2 = val;
+        },
+        dateTimeSelect3(val) {
+            this.dateTime3 = val;
+        },
+        dateTimeSelect4(val) {
+            this.dateTime4 = val;
+        },
+        dateTimeSelect5(val) {
+            this.dateTime5 = val;
+        },
     }
 }
 </script>

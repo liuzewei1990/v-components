@@ -34,6 +34,8 @@ export default {
     watch: {
         value(val) {
             this.visible = val;
+            if(this.visible) this.$emit("on-show");
+            else this.$emit("on-hide");
         },
         visible(val) {
             this.$emit("input", val);

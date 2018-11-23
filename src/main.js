@@ -19,7 +19,21 @@ Vue.prototype.$toast = (o = {}) => {
 import vueAlertView from './components/v-confirm'
 Vue.use(vueAlertView);
 
-
+Vue.prototype.ModalHelper = (function (bodyCls) {
+    var scrollTop;
+    return {
+        open: function () {
+            scrollTop = document.scrollingElement.scrollTop;
+            document.body.classList.add(bodyCls);
+            document.body.style.top = -scrollTop + 'px';
+        },
+        close: function () {
+            document.body.classList.remove(bodyCls);
+            // scrollTop lost after set position:fixed, restore it back.
+            document.scrollingElement.scrollTop = scrollTop;
+        }
+    };
+})('modal-open');
 
 new Vue({
     el: '#app',

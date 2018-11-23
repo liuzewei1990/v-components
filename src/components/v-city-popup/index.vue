@@ -1,5 +1,5 @@
 <template>
-    <Popup v-model="isVisibile" @on-first-show="onFirstShow" position="bottom" height="auto" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+    <Popup v-model="isVisibile" @on-show="$emit('on-show')" @on-hide="$emit('on-hide')" position="bottom" height="auto" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
         <PopupHeader title="所在地区" :showBottomBorder="true"></PopupHeader>
         <div class="city-nav">
             <a :class="{crt:currNavSelectdIndex == index}" v-for="(item,index) in selectdCityVal" :key="index" @click="handleClickNav(index)" href="javascript:void(0);">{{item.name}}</a>
@@ -8,17 +8,17 @@
             <ul class="city-content" :class="currNavSelectdIndex==2?'cityselect-next':'cityselect-prev'">
                 <li class="city-item">
                     <div class="city-item-box">
-                        <a :class="{crt:selectdCityVal[0] && selectdCityVal[0].code == item.code}" @click="handleClickSheng(item,index)" href="javascript:void(0);" v-for="(item,index) in shengData" :key="index">{{item.name}}</a>
+                        <a :class="{crt:selectdCityVal[0] && selectdCityVal[0].code == item.code}" @click="handleClick_sheng(item,index)" href="javascript:void(0);" v-for="(item,index) in shengData" :key="index">{{item.name}}</a>
                     </div>
                 </li>
                 <li class="city-item">
                     <div class="city-item-box">
-                        <a :class="{crt:selectdCityVal[1] && selectdCityVal[1].code == item.code}" @click="handleClickShi(item,index)" href="javascript:void(0);" v-for="(item,index) in shiData" :key="index">{{item.name}}</a>
+                        <a :class="{crt:selectdCityVal[1] && selectdCityVal[1].code == item.code}" @click="handleClick_shi(item,index)" href="javascript:void(0);" v-for="(item,index) in shiData" :key="index">{{item.name}}</a>
                     </div>
                 </li>
                 <li class="city-item">
                     <div class="city-item-box">
-                        <a :class="{crt:selectdCityVal[2] && selectdCityVal[2].code == item.code}" @click="handleClickQu(item,index)" href="javascript:void(0);" v-for="(item,index) in quData" :key="index">{{item.name}}</a>
+                        <a :class="{crt:selectdCityVal[2] && selectdCityVal[2].code == item.code}" @click="handleClick_qu(item,index)" href="javascript:void(0);" v-for="(item,index) in quData" :key="index">{{item.name}}</a>
                     </div>
                 </li>
             </ul>
@@ -33,7 +33,7 @@ import cityData from './citydata.json'
 export default {
     components:{Popup,PopupHeader},
     props:{
-        selectdCityVal:{
+        initValue:{
             type:Array,
             default:()=>{ return []; }
         }
@@ -43,31 +43,22 @@ export default {
             isVisibile:false,
             currNavSelectdIndex:0,
             cityData:cityData,
-
             shengData:[],
             shiData:[],
             quData:[],
-            // selectdCityVal: [{
-            //     name: '北京',
-            //     code: '110000'
-            // }, {
-            //     name: '北京市',
-            //     code: '110100'
-            // }, {
-            //     name: '昌平区',
-            //     code: '110114'
-            // }],
-            // selectdCityVal: [],
+            selectdCityVal: [],
         }
     },
+    created() {
+        this.$emit("confirm",this.initValue);
+    },
     methods:{
-        onFirstShow(){
-            this.init();
-            this.handleClickNav(this.selectdCityVal.length-1);
-            console.info("初始化:city数据");
-        },
         init(){
             this.shengData = this.cityData;
+            if(this.selectdCityVal.length == 0){
+                this.shiData = [];
+                this.quData = [];
+            }
             if(this.selectdCityVal.length > 0){
                 this.selectdCityVal[0] && (this.shiData = this.shengData.find(item=>item.code==this.selectdCityVal[0].code).children);
                 this.selectdCityVal[1] && (this.quData = this.shiData.find(item => item.code == this.selectdCityVal[1].code).children);
@@ -78,26 +69,34 @@ export default {
         },
         open(){
             this.isVisibile = true;
+            this.selectdCityVal = JSON.parse(JSON.stringify(this.initValue));
+            this.init();
+            this.handleClickNav(this.selectdCityVal.length-1);
+            console.info("初始化:city数据");
         },
         handleClickNav(index){
             this.currNavSelectdIndex = index;
         },
-        handleClickSheng(item,index){
+        handleClick_sheng(item,index){
+            if(this.selectdCityVal[0].code == item.code) return;
             this.selectdCityVal=[];
             this.selectdCityVal[0]={name:item.name,code:item.code};
             this.handleClickNav(1);
             this.init();
         },
-        handleClickShi(item,index){
+        handleClick_shi(item,index){
+            if(this.selectdCityVal[1].code == item.code) return;
+            this.selectdCityVal.splice(2,1);
             this.selectdCityVal[1]={name:item.name,code:item.code};
             this.handleClickNav(2);
             this.init();
         },
-        handleClickQu(item,index){
+        handleClick_qu(item,index){
+            if(this.selectdCityVal[2].code == item.code) return;
             this.selectdCityVal[2]={name:item.name,code:item.code};
             this.close();
         },
-        close(){            
+        close(){
             this.$emit("confirm",this.selectdCityVal);
             this.isVisibile = false;
         }
@@ -185,27 +184,29 @@ export default {
             flex: 0 0 50%;
             overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
+            // -webkit-overflow-scrolling: touch;
             background-color: #FFF;
         }
 
         .city-item-box{
             width: 100%;
-            height: inherit;
+            // height: 100%;
             display: block;
-            padding: 0 20px;
+            padding: 0 10px 20px 20px;
             box-sizing: border-box;
             a{
                 color: #333;
                 font-size: 13px;
                 height: 40px;
-                line-height: 40px;
-                overflow: hidden;
+                // line-height: 40px;
+                // overflow: hidden;
                 display: flex;
                 align-items: center;
                 width: 100%;
                 position: relative;
                 z-index: 1;
+                padding-right: 10px;
+                box-sizing: border-box;
                 &::before{
                     content: '';
                     position: absolute;
@@ -225,7 +226,7 @@ export default {
                 color: #F23030;
                 background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAMAAACgaw2xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAA8UExURUdwTOQ6OtQqKuQ4O/8AAOM4O+Q4POI4OuM4O+Q4O+M4O+M5POQ4O+M4O+U4OuU2POQ4POQ4O+Q5O+Q5POG6XjYAAAATdFJOUwAvBl4BstwRzseW9XvrRR2+iVGqKQ+qAAAAaUlEQVQY023PSQ6AIBBEUSZpBhGTuv9dnRAiVq869VdPKXZmj3RXCTxYlMp2nbGxXTxWtrsFi2NhhRe2b8ia7bXAUllEam+M8pWZNyAIlUkY5SsbZZa95S9rhcjuQmVX4bKzdNlcuuy5A/z7BLUpU+pnAAAAAElFTkSuQmCC);
                 background-size: 12px auto;
-                background-position: right 10px bottom 15px;
+                background-position: right 0px bottom 15px;
                 background-repeat: no-repeat;
             }
         }

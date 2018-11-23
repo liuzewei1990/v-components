@@ -5,36 +5,36 @@
         <h2>Essential Links</h2>
 
         <button @click="showActionsheet=true">show ios</button>
-        <Actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu">
+        <Actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
         </Actionsheet>
 
         <button @click="showActionsheet1=true">show ios header show-cancel</button>
-        <Actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu">
+        <Actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
             <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
         </Actionsheet>
 
         <button @click="showActionsheet2=true">show android header</button>
-        <Actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu">
+        <Actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
             <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
         </Actionsheet>
 
         <button @click="showActionsheet3=true">show android</button>
-        <Actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu"></Actionsheet>
+        <Actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close"></Actionsheet>
 
         <button @click="showPopup1=true">show bottom Popup</button>
-        <Popup v-model="showPopup1" position="bottom" height="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+        <Popup v-model="showPopup1" position="bottom" height="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
             <p>内容</p>
         </Popup>
         <button @click="showPopup2=true">show top Popup</button>
-        <Popup v-model="showPopup2" position="top" height="140px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+        <Popup v-model="showPopup2" position="top" height="140px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
             <p>内容</p>
         </Popup>
         <button @click="showPopup3=true">show left Popup</button>
-        <Popup v-model="showPopup3" position="left" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+        <Popup v-model="showPopup3" position="left" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
             <p>内容</p>
         </Popup>
         <button @click="showPopup4=true">show right Popup</button>
-        <Popup v-model="showPopup4" position="right" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false">
+        <Popup v-model="showPopup4" position="right" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
             <p>内容</p>
         </Popup>
 
@@ -45,7 +45,7 @@
         <button @click="iosRemind">show iosRemind</button>
 
         <button @click="showMaskBox">show MaskBox</button>
-        <MaskBox v-model="maskBox" :show-mask="true" :show-loading="maskBoxLoading">
+        <MaskBox v-model="maskBox" :show-mask="true" :show-loading="maskBoxLoading" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
             <img width="100" :src="IMG_DEMO" alt="">
         </MaskBox>
         <br>
@@ -267,11 +267,55 @@
         <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.City.open()"></Cell>
         <City :city="cityData" :init-value="defaultCityVal" @confirm="cityConfirm" ref="City"></City>
 
-        <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.CityPopup.open()"></Cell>
-        <CityPopup ref="CityPopup" :selectd-city-val="defaultCityVal2" @confirm="cityConfirm"></CityPopup>
+        <Cell title="请选择地区" :desc="cityValue1 || '请选择收货地址'" :isLink="true" @click.native="$refs.CityPopup1.open()"></Cell>
+        <CityPopup ref="CityPopup1" :init-value="defaultCityVal1" @confirm="cityConfirm1" @on-show="ModalHelper.open" @on-hide="ModalHelper.close"></CityPopup>
         
-        <Cell title="请选择地区" :desc="cityValue" :isLink="true" @click.native="$refs.CityPopup.open()"></Cell>
-        <CityPopup ref="CityPopup"  @confirm="cityConfirm"></CityPopup>
+        <Cell title="请选择地区" :desc="cityValue2 || '请选择收货地址'" :isLink="true" @click.native="$refs.CityPopup2.open()"></Cell>
+        <CityPopup ref="CityPopup2" :init-value="defaultCityVal2"  @confirm="cityConfirm2" @on-show="ModalHelper.open" @on-hide="ModalHelper.close"></CityPopup>
+        <br>
+        <br>
+        <br>
+        <br>
+        <Cell title="CheckIcon组件" style="text-align:center;margin-top:50px;"></Cell>
+        <CheckIcon :value.sync="checkIcon1" flex-direction="column" :scale="1">
+            <span @click="checkIcon1 = !checkIcon1" style="font-size:12px;">我同意入网协议</span>
+        </CheckIcon>
+        <br/>
+        <br/>
+        <CheckIcon :value.sync="checkIcon1" flex-direction="column-reverse" :scale="1">
+            <span @click="checkIcon1 = !checkIcon1" style="font-size:12px;">我同意入网协议</span>
+        </CheckIcon>
+        <br/>
+        <CheckIcon slot="desc" :value.sync="checkIcon2" color="#ff9c00">
+            <span @click="checkIcon2 = !checkIcon2" style="color:#ff9c00;">同意不？({{checkIcon2}})</span>
+        </CheckIcon>
+        <br/>
+        <CheckIcon slot="desc" :value.sync="checkIcon2" color="#ff9c00" flex-direction="row-reverse">
+            <span @click="checkIcon2 = !checkIcon2" style="color:#ff9c00;">同意不？({{checkIcon2}})</span>
+        </CheckIcon>
+        <br/>
+        <CheckIcon slot="desc" :value.sync="checkIcon2" flex-direction="row-reverse" :scale="1.5">
+            <span @click="checkIcon2 = !checkIcon2">大号Icon</span>
+        </CheckIcon>
+        <br/>
+        <CheckIcon slot="desc" :value.sync="checkIcon1" :scale="1">
+            <span slot="checked" style="padding:10px 20px; background:red; color:#fff;">选中</span>
+            <span slot="unchecked" style="padding:10px 20px;background:#aaa;">未选中</span>
+            <span @click="$toast('点到了文字哦~~')">点击文字</span>
+        </CheckIcon>
+        <br/>
+        <CheckIcon slot="desc" :value.sync="checkIcon2" :scale="1">
+            <span @click="$toast('点到了文字哦~~')">点击文字</span>
+        </CheckIcon>
+        <Cell title="是否勾选" desc="配合cell组件" @click.native="checkIcon2 = !checkIcon2">
+            <CheckIcon slot="desc" :value.sync="checkIcon2" color="#ff9c00"></CheckIcon>
+        </Cell>
+        <Goods :item="goods[0]" :isShowBrief="true">
+            <CheckIcon slot="actionIcon" :value.sync="checkIcon2" color="#ff9c00"></CheckIcon>
+        </Goods>
+        <Goods :item="goods[0]" :isShowBrief="true">
+            <CheckIcon slot="actionIcon" :value.sync="checkIcon2" color="#ff9c00"></CheckIcon>
+        </Goods>
     </div>
 </template>
 
@@ -284,21 +328,22 @@ import Badge from "./components/v-badge";
 import { Checker, CheckerItem } from "./components/v-checker";
 import { Grid, GridItem } from "./components/v-grid";
 import Popup from "./components/v-popup";
-import LoadMore from "./components/v-loadMore";
+import LoadMore from "./components/v-load-more";
 import Media from "./components/v-media";
 import { Swiper, SwiperItem } from "./components/v-swiper";
 import Goods from "./components/v-goods";
 import { Tab, TabItem } from './components/v-tab';
 import Header from './components/v-header';
 import Number from './components/v-number';
-import MaskBox from './components/v-maskBox';
+import MaskBox from './components/v-mask-box';
 import DateTime from 'vue-date-time-m';
 import City from './components/v-city';
 import cityData from './components/v-city/cityData.json';
-import CityPopup from './components/v-cityPopup';
+import CityPopup from './components/v-city-popup';
+import CheckIcon from './components/v-check-Icon';
 export default {
     name: 'app',
-    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox,DateTime,City,CityPopup },
+    components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number,MaskBox,DateTime,City,CityPopup,CheckIcon },
     data() {
         return {
             IMG_DEMO: IMG_DEMO,
@@ -503,6 +548,7 @@ export default {
             dateTime4:"",
             dateTime5:"",
             cityData:cityData,
+            cityValue:"",
             defaultCityVal: [{
                 name: '北京',
                 value: '110000'
@@ -513,17 +559,22 @@ export default {
                 name: '昌平区',
                 value: '110114'
             }],
-            cityValue:"",
+            
+            cityValue1:"",
+            defaultCityVal1:[],
+            cityValue2:"",
             defaultCityVal2: [{
-                name: '北京',
-                code: '110000'
-            }, {
-                name: '北京市',
-                code: '110100'
-            }, {
-                name: '昌平区',
-                code: '110114'
+                "code": "130000",
+                "name": "河北省",
+            },{
+                "code": "130800",
+                "name": "承德市",
+            },{
+                "code": "130825",
+                "name": "隆化县"
             }],
+            checkIcon1:true,
+            checkIcon2:false
         }
     },
     methods: {
@@ -606,13 +657,25 @@ export default {
         },
         cityConfirm(v){
             this.cityValue = `${v[0].name}-${v[1].name}-${v[2].name}`;
+        },
+        cityConfirm1(v){
+            this.defaultCityVal1 = v;
+            if(v.length) this.cityValue1 = `${v[0].name}-${v[1].name}-${v[2].name}`;
+        },
+        cityConfirm2(v){
             console.log(v)
-        }
+            this.defaultCityVal2 = v;
+            if(v.length) this.cityValue2 = `${v[0].name}-${v[1].name}-${v[2].name}`;
+        },
     }
 }
 </script>
 
 <style>
+body.modal-open {
+    position: fixed;
+    width: 100%;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
 
 // 解决ios不支持按钮:active伪类的方法
 document.body.addEventListener('touchstart', function () { });
@@ -36,6 +37,7 @@ Vue.prototype.ModalHelper = (function (bodyCls) {
 })('modal-open');
 
 new Vue({
+    router,
     el: '#app',
     render: h => h(App)
 })

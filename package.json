@@ -18,7 +18,8 @@
         "lrz": "^4.9.40",
         "ng-ocr": "^1.6.1",
         "vue": "^2.5.11",
-        "vue-date-time-m": "^1.0.26"
+        "vue-date-time-m": "^1.0.26",
+        "vue-router": "^3.0.2"
     },
     "browserslist": [
         "> 1%",

@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>v-components</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app"></div>
     <script src="./dist/build.js"></script>
-  </body>
+</body>
+<script>
+    ; (function () {
+        var src = '//cdn.bootcss.com/eruda/1.5.2/eruda.min.js';
+        if (!/dev=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+    })();    
+</script>
+
 </html>

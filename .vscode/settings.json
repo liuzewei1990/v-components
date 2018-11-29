@@ -41,7 +41,7 @@
     "vetur.format.defaultFormatter.html": "js-beautify-html",
     "vetur.format.defaultFormatterOptions": {
         "js-beautify-html": {
-            "wrap_attributes": "" //强制换行
+            "wrap_attributes": "auto" //强制换行
         }
     },
     "vetur.format.defaultFormatter.js": "vscode-typescript",

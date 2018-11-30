@@ -16,5 +16,10 @@ export default new Router({
             path: '/infiniteScroll',
             component: require('./views/infiniteScroll.vue').default
         },
+        {
+            name: 'loadmore',
+            path: '/loadmore',
+            component: require('./views/loadmore.vue').default
+        },
     ]
 })

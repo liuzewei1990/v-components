@@ -337,9 +337,23 @@
     <br>
     <br>
     <br>
-    <Cell title="基于局部滚动条的下拉加载" style="text-align:center;margin-top:50px;"></Cell>
+    <Cell title="基于局部滚动条的下拉加载" :borderLine="true" style="text-align:center;margin-top:50px;"></Cell>
     <infiniteScroll class="infinite-scroll-box"></infiniteScroll>
+    <Cell title="应用在MaskBox组件上" :borderLine="true" :isLink="true" @click.native="maskBox1 = true" style="margin-top:50px;"></Cell>
+    <MaskBox v-model="maskBox1" :show-mask="true" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
+      <Header title="获奖名单" :left-options="{showBack:false}"></Header>
+      <infiniteScroll v-if="maskBox1" class="infinite-scroll-box-MaskBox"></infiniteScroll>
+    </MaskBox>
     <Cell title="前往基于body滚动条的下拉加载" :isLink="true" @click.native="$router.push('/infiniteScroll')"></Cell>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Cell title="局部下拉刷新，上拉加载DEMO" style="text-align:center;margin-top:50px;"></Cell>
+    <div style="position:relative;height:500px;">
+      <LoadmorePage></LoadmorePage>
+    </div>
+    <Cell title="前往下拉刷新，上拉加载DEMO" :isLink="true" @click.native="$router.push('/loadmore')" style="margin-top:50px;"></Cell>
   </div>
 </template>
 
@@ -373,10 +387,11 @@ import AlloyCrop from "../utils/img-crop/alloy-crop.js";
 import AlloyCrop1 from "../utils/img-crop/alloy-crop.1.js";
 
 import infiniteScroll from './infiniteScroll.vue'
+import LoadmorePage from './loadmore.vue'
 
 export default {
   name: 'app',
-  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll },
+  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage },
   data() {
     return {
       IMG_DEMO: IMG_DEMO,
@@ -612,6 +627,8 @@ export default {
       base641: "",
       base642: "",
       base643: "",
+
+      maskBox1: false,
     }
   },
   methods: {
@@ -788,53 +805,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-body.modal-open {
-  position: fixed;
-  width: 100%;
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-  color: #2c3e50;
-  margin-top: 60px;
-  padding: 10px;
-  box-sizing: border-box;
-
-  background: #f2f2f2;
-}
-.clearfix:after {
-  clear: both;
-  content: " ";
-  display: block;
-  font-size: 0;
-  height: 0;
-  visibility: hidden;
-}
-.clearfix {
-  zoom: 1;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 .actionsheet-header {
   color: #fff;
   background: #ff5d5d;
@@ -884,7 +854,13 @@ li {
 }
 .infinite-scroll-box {
   height: 300px;
-  border: 1px solid #ccc;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.infinite-scroll-box-MaskBox {
+  background: #fff;
+  width: 300px;
+  height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
 }

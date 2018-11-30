@@ -19,7 +19,8 @@
         "ng-ocr": "^1.6.1",
         "vue": "^2.5.11",
         "vue-date-time-m": "^1.0.26",
-        "vue-router": "^3.0.2"
+        "vue-router": "^3.0.2",
+        "vue-scroller": "^2.2.4"
     },
     "browserslist": [
         "> 1%",

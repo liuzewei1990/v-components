@@ -1,5 +1,5 @@
 <template>
-  <div v-infinite-scroll="loadMore" infinite-scroll-immediate-check="true" infinite-scroll-disabled="infiniteDisabled" infinite-scroll-distance="80">
+  <div style="background:#fff;" v-infinite-scroll="loadMore" infinite-scroll-immediate-check="true" infinite-scroll-disabled="infiniteDisabled" infinite-scroll-distance="80">
 
     <p class="item" v-for="(item,index) in list" :key="index">{{item}}</p>
 
@@ -16,9 +16,10 @@
 // 下拉加载更多指令
 import infiniteScroll from '../directives/vue-infinite-scroll';
 import LoadMore from "../components/v-load-more";
+import Header from '../components/v-header';
 export default {
-  directives: { infiniteScroll },
-  components: { LoadMore },
+  directives: { infiniteScroll, },
+  components: { LoadMore, Header },
   data() {
     return {
       DB: [], // 模拟数据库
@@ -73,7 +74,9 @@ export default {
     },
     // 模拟接口
     ajaxGetCollectList(query) {
-      let collectList = this.DB.splice((query.page - 1) * query.size, query.size);
+      console.log(query.page)
+      let DB = [...this.DB];
+      let collectList = DB.splice((query.page - 1) * query.size, query.size);
       return {
         collectList: collectList,
         totalPages: Math.ceil(this.DB.length / query.size),

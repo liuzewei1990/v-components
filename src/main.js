@@ -9,7 +9,7 @@ Vue.prototype.$toast = (o = {}) => {
     let c = {
         duration: 5000,
         message: typeof o === 'string' ? o : o.message,
-        position: "bottom",
+        position: "center",
         className: "",
         iconClass: ""
     };

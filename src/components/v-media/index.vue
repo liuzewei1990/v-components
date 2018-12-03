@@ -1,19 +1,19 @@
 <template>
-    <a class="v-media-box" href="javascript:void(0);">
-        <div class="v-media-hd" v-if="pic">
-            <img :src="pic" alt="">
-        </div>
-        <div class="v-media-bd">
-            <h4 class="v-media-bd__title">{{title}}</h4>
-            <p class="v-media-bd__desc">{{desc}}</p>
-        </div>
-        <div class="v-media-link"></div>
-    </a>
+  <a class="v-media-box" href="javascript:void(0);">
+    <div class="v-media-hd" v-if="pic">
+      <img :src="pic" alt="">
+    </div>
+    <div class="v-media-bd">
+      <h4 class="v-media-bd__title">{{title}}</h4>
+      <p class="v-media-bd__desc">{{desc}}</p>
+    </div>
+    <div class="v-media-link"></div>
+  </a>
 </template>
 
 <script>
 export default {
-    props: ["pic", "title", "desc"]
+  props: ["pic", "title", "desc"]
 }
 </script>
 
@@ -56,6 +56,7 @@ export default {
   .v-media-bd {
     flex: 1;
     min-width: 0;
+    text-align: left;
     .v-media-bd__title {
       margin: 0;
       padding: 0;

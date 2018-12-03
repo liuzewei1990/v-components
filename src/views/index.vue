@@ -45,7 +45,7 @@
     <button @click="iosRemind">show iosRemind</button>
 
     <button @click="showMaskBox">show MaskBox</button>
-    <MaskBox v-model="maskBox" :show-mask="true" :show-loading="maskBoxLoading" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
+    <MaskBox v-model="maskBox" :show-loading="maskBoxLoading" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
       <img width="100" :src="IMG_DEMO" alt="">
     </MaskBox>
     <br>
@@ -340,9 +340,10 @@
     <Cell title="基于局部滚动条的下拉加载" :borderLine="true" style="text-align:center;margin-top:50px;"></Cell>
     <infiniteScroll class="infinite-scroll-box"></infiniteScroll>
     <Cell title="应用在MaskBox组件上" :borderLine="true" :isLink="true" @click.native="maskBox1 = true" style="margin-top:50px;"></Cell>
-    <MaskBox v-model="maskBox1" :show-mask="true" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
+    <MaskBox v-model="maskBox1" :defaultcloseBtnVisible="false" :hideOnBlur="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
       <Header title="获奖名单" :left-options="{showBack:false}"></Header>
       <infiniteScroll v-if="maskBox1" class="infinite-scroll-box-MaskBox"></infiniteScroll>
+      <Button type="warn" recta @click.native="maskBox1 = false">关闭</Button>
     </MaskBox>
     <Cell title="前往基于body滚动条的下拉加载" :isLink="true" @click.native="$router.push('/infiniteScroll')"></Cell>
     <br>
@@ -354,6 +355,29 @@
       <LoadmorePage></LoadmorePage>
     </div>
     <Cell title="前往下拉刷新，上拉加载DEMO" :isLink="true" @click.native="$router.push('/loadmore')" style="margin-top:50px;"></Cell>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Cell title="Keyboard组件" style="text-align:center;margin-top:50px;"></Cell>
+    <button @click="$refs.key.disorderFn()">调用$refs.key.disorderFn()打乱键盘</button>
+    <button @click="maxMoney = 100">点击限制最大输入100元，默认值：99999</button>
+    <KeyboardInput @click.native="focus = true" class="ipt" :value="money" :focus="focus"></KeyboardInput>
+    <br>
+    <Keyboard ref="key" type="money" v-model="money" :fixed="false" :maxMoney="maxMoney" confirmText="确认支付" @confirm="$refs.KeyboardPopup.open()"></Keyboard>
+    <KeyboardPopup ref="KeyboardPopup" @confirm="keyboardPopupConfirm" @cancel="$toast('您已取消')" @on-show="ModalHelper.open" @on-hide="ModalHelper.close"></KeyboardPopup>
+    <span>数字密码：637031</span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <KeyboardInput @click.native="focus = true" class="ipt" :value="money1" :focus="focus"></KeyboardInput>
+    <button @click="$refs.key1.disorderFn()">调用$refs.key.disorderFn()打乱键盘</button>
+    <button @click="maxLength = '10'">点击限制最大输入长度为10,默认值：6</button>
+    <Keyboard ref="key1" type="number" v-model="money1" :fixed="false" :maxLength="maxLength" confirmText="确认" @confirm="confirmPay"></Keyboard>
+    <br>
+    <br>
+
   </div>
 </template>
 
@@ -388,10 +412,13 @@ import AlloyCrop1 from "../utils/img-crop/alloy-crop.1.js";
 
 import infiniteScroll from './infiniteScroll.vue'
 import LoadmorePage from './loadmore.vue'
+import { Keyboard, KeyboardInput } from '../components/v-keyboard';
+import KeyboardPopup from '../components/v-keyboard-popup';
+
 
 export default {
   name: 'app',
-  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage },
+  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
   data() {
     return {
       IMG_DEMO: IMG_DEMO,
@@ -629,6 +656,17 @@ export default {
       base643: "",
 
       maskBox1: false,
+      money: "",
+      maxMoney: 99999,
+      money1: "",
+      maxLength: '6',
+      focus: true
+    }
+  },
+  watch: {
+    focus(val) {
+      if (val) this.$refs.key.open();
+      else this.$refs.key.close();
     }
   },
   methods: {
@@ -799,7 +837,24 @@ export default {
         });
       })
     },
+    confirmPay() {
 
+    },
+    keyboardPopupConfirm(number) {
+      setTimeout(() => {
+        if (number == "637031") {
+          this.$iosRemind({
+            title: "提示",
+            text: "订单支付成功",
+            remindDuration: 2000,
+            appendChildClass: "",
+          })
+          this.$refs.KeyboardPopup.close();
+        } else {
+          this.$refs.KeyboardPopup.error("对不起，您的支付密码不正确，请重新输入。")
+        }
+      }, 2000);
+    },
   }
 }
 </script>

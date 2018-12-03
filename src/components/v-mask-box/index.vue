@@ -1,59 +1,72 @@
 <template>
-    <div class="box-example" :class="{'box-example-bg':showMask}" v-show="visible" @click="visible = false">
-        <div class="box-content">
-            <i v-if="showLoading" class="weui-loading"></i>
-            <slot v-else></slot>
-        </div>
-
-        <div class="boxClose" v-if="showMask" @click="visible = false"></div>
+  <div class="box-example" :class="{'box-example-bg':!isTransparent}" v-show="visible" @click="close">
+    <div class="box-content">
+      <i v-if="showLoading" class="weui-loading"></i>
+      <slot v-else></slot>
     </div>
+    <slot name="footer">
+      <div v-show="defaultcloseBtnVisible" class="boxClose" v-if="!isTransparent" @click="visible = false"></div>
+    </slot>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        value: {
-            type: Boolean,
-            default: false
-        },
-        showMask: {
-            type: Boolean,
-            default: true
-        },
-        showLoading: {
-            type: Boolean,
-            default: false
-        }
+  props: {
+    value: {
+      type: Boolean,
+      default: false
     },
-    data() {
-        return {
-            visible: false,
-            key: true,
-        };
+    hideOnBlur: {
+      type: Boolean,
+      default: true
     },
-    watch: {
-        value(val) {
-            this.visible = val;
-            if(this.visible) this.$emit("on-show");
-            else this.$emit("on-hide");
-        },
-        visible(val) {
-            this.$emit("input", val);
-            if (val && this.key) {
-                this.key = false;
-                this.$emit("once-visible", val);
-            }
-
-        }
+    isTransparent: {
+      type: Boolean,
+      default: false
     },
-    created() {
-        this.visible = this.value;
+    defaultcloseBtnVisible: {
+      type: Boolean,
+      default: true
+    },
+    showLoading: {
+      type: Boolean,
+      default: false
     }
+  },
+  data() {
+    return {
+      visible: false,
+      key: true,
+    };
+  },
+  watch: {
+    value(val) {
+      this.visible = val;
+      if (this.visible) this.$emit("on-show");
+      else this.$emit("on-hide");
+    },
+    visible(val) {
+      this.$emit("input", val);
+      if (val && this.key) {
+        this.key = false;
+        this.$emit("once-visible", val);
+      }
+    }
+  },
+  created() {
+    this.visible = this.value;
+  },
+  methods: {
+    close() {
+      if (this.hideOnBlur) this.visible = false;
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
-@import './weui-loading.less';
+@import "./weui-loading.less";
 @keyframes fideIn {
   0% {
     opacity: 0;

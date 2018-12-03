@@ -1,5 +1,5 @@
 <template>
-  <scroller :style="`top: ${top}px`" ref="scroller" refreshText="下拉刷新" refreshLayerColor="#aaa" loadingLayerColor="#aaa" :minContentHeight="0" noDataText="没有更多了" width="100%" height="100%" :snapping="false" :snap-height="50" :animationDuration="150" :on-refresh="loadTop" :on-infinite="loadBottom" refresh-layer-color="#4b8bf4" loading-layer-color="#ec4949">
+  <scroller :style="`top: ${top}px`" ref="scroller" refreshText="下拉刷新" refreshLayerColor="#aaa" loadingLayerColor="#aaa" :minContentHeight="0" noDataText="没有更多了" width="100%" height="100%" :snapping="false" :snap-height="50" :animationDuration="150" :on-refresh="loadTop" :on-infinite="loadBottom" @onScroll="onScroll" refresh-layer-color="#4b8bf4" loading-layer-color="#ec4949">
     <!-- custom refresh spinner, use default `spinner` & viewBox 0,0,64,64 class -->
     <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
       <g stroke-width="7" stroke-linecap="round">
@@ -49,7 +49,7 @@
 </template>
   
 <script>
-import VueScroller from 'vue-scroller'
+import VueScroller from './index.js'
 export default {
   components: {
     scroller: VueScroller.Scroller
@@ -94,7 +94,9 @@ export default {
   },
 
   methods: {
-
+    onScroll({ left, top, zoom }) {
+      console.log({ left, top, zoom })
+    },
     // 调用api加载数据的方法
     loadApiData(query) {
       try {

@@ -187,8 +187,34 @@ export default {
     line-height: 62px;
     text-align: center;
     font-size: 24px;
-    border-right: 1px solid #d9d9d9;
-    border-top: 1px solid #d9d9d9;
+    position: relative;
+    &::after {
+      content: " ";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+      bottom: 0;
+      border-right: 1px solid #e3e5e9;
+      color: #e3e5e9;
+      transform-origin: 100% 0;
+      transform: scaleX(0.5);
+    }
+    &::before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid #e3e5e9;
+      color: #e3e5e9;
+      transform-origin: 0 0;
+      transform: scaleY(0.5);
+    }
+
+    // border-right: 1px solid #d9d9d9;
+    // border-top: 1px solid #d9d9d9;
     touch-callout: none;
   }
 
@@ -216,6 +242,7 @@ export default {
       display: block;
       width: 100%;
       height: 124px;
+      transform: none;
     }
   }
 

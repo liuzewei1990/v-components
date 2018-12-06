@@ -6,12 +6,12 @@
           <div class="ios-alertview-title" v-if="title">{{ title }}</div>
           <div class="ios-alertview-text" v-html="text" v-if="text"></div>
           <input autofocus class="ios-alertview-text-input" :placeholder="placeholder" v-model="value" v-if="input" />
-                </div>
-          <div class="ios-alertview-buttons" v-if="buttons && buttons.length" :class="{'ios-alertview-buttons-horizontal': buttons.length <= 2}">
-            <span class="ios-alertview-button" :class="{'ios-alertview-button-bold': button.bold}" v-for="(button, index) in buttons" :key="index" @click.prevent.stop="onClick(button, index)">{{ button.text }}</span>
-          </div>
+        </div>
+        <div class="ios-alertview-buttons" v-if="buttons && buttons.length" :class="{'ios-alertview-buttons-horizontal': buttons.length <= 2}">
+          <span class="ios-alertview-button" :class="{'ios-alertview-button-bold': button.bold}" v-for="(button, index) in buttons" :key="index" @click.prevent.stop="onClick(button, index)">{{ button.text }}</span>
         </div>
       </div>
+    </div>
   </transition>
 </template>
 

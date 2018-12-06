@@ -26,7 +26,7 @@
       </g>
     </svg>
 
-    <slot></slot>
+    <slot :list="list" :status="status"></slot>
 
     <!-- custom infinite spinner -->
     <svg class="spinner" style="fill: #ec4949;" slot="infinite-spinner" viewBox="0 0 64 64">
@@ -69,11 +69,6 @@ export default {
         };
       }
     },
-  },
-  watch: {
-    list(list) {
-      this.$emit("watchDataList", list);
-    }
   },
   data() {
     return {

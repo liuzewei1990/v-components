@@ -95,7 +95,9 @@
     <Button type="warn" :disabled="true" :show-loading="true">禁用</Button>
     <Button type="warn" recta>warn</Button>
     <Button type="warn" plain>warn</Button>
+    <Button type="warn"><i class="icon-tip" style="margin-right:5px;position: relative;top: 1px;"></i>说明</Button>
     <Button style="border-radius:500px;" plain>border-radius:500px;</Button>
+
     <br>
     <br>
     <br>
@@ -418,7 +420,7 @@ import KeyboardPopup from '../components/v-keyboard-popup';
 
 export default {
   name: 'app',
-  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
+  components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
   data() {
     return {
       IMG_DEMO: IMG_DEMO,

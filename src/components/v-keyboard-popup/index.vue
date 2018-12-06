@@ -92,6 +92,7 @@ export default {
 .header {
   background: #fff;
 }
+
 .pass-box {
   padding: 10px 40px 30px;
   .err-tip {
@@ -109,7 +110,19 @@ export default {
     li {
       flex: 1;
       height: 30px;
-      border-right: 1px solid #eee;
+      position: relative;
+      &::after {
+        content: " ";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1px;
+        bottom: 0;
+        border-right: 1px solid #e3e5e9;
+        color: #e3e5e9;
+        transform-origin: 100% 0;
+        transform: scaleX(0.5);
+      }
       display: flex;
       align-items: center;
       .r {
@@ -119,6 +132,11 @@ export default {
         border-radius: 50%;
         background: #515151;
         margin: 0 auto;
+      }
+    }
+    li:last-child {
+      &::after {
+        display: none;
       }
     }
   }
@@ -138,7 +156,7 @@ export default {
     padding: 10px 15px;
     color: #fff;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
     display: flex;
     align-items: center;
   }

@@ -13,6 +13,7 @@
         "alloycrop": "^1.0.5",
         "alloyfinger": "^0.1.15",
         "anima-vue-scroller": "^1.1.9",
+        "better-scroll": "^1.13.4",
         "cropperjs": "^1.4.3",
         "css3transform": "^1.2.1",
         "lrz": "^4.9.40",

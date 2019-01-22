@@ -1,6 +1,6 @@
 <template>
         <div>
-                <deteTime ref="dateTime" type="dateTime"></deteTime>
+                <deteTime ref="dateTime" type="date"></deteTime>
         </div>
 </template>
 

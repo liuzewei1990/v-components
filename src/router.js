@@ -22,9 +22,9 @@ export default new Router({
                         component: require('./views/loadmore.vue').default
                 },
                 {
-                        name: 'deteTime',
-                        path: '/deteTime',
-                        component: require('./views/deteTime.vue').default
+                        name: 'dateTime',
+                        path: '/dateTime',
+                        component: require('./views/dateTime.vue').default
                 },
         ]
 })

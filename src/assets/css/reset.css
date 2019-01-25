@@ -1,0 +1,94 @@
+body, h1, h2, h3, p, dl, dd, ol, ul, th, td, form, fieldset, input, button, textarea { margin: 0; padding: 0; }
+html { word-wrap: break-word; background: #fff;}
+body {font-family: 'sans-serif', "Microsoft YaHei", "微软雅黑", "Tahoma", "Helvetica"; position: relative; }
+ol, ul { list-style: none outside none; }
+table { border-collapse: collapse; border-spacing: 0; empty-cells: show; font-size: inherit; }
+fieldset, img { border: 0 none; }
+cite, em, s, i, b { font-style: normal; }
+input, button, textarea, select {
+	 font-size: 100%; background-color: transparent; 
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;}
+body, input, button, textarea, select, option {border: none;outline: none}
+a, input, textarea { outline: 0 none; text-decoration:none;}
+li, img, label, input { vertical-align: middle; }
+h1, h2, h3, h4, h5, h6, img, p, dl, dd, ol, ul, th, td, form, em, i, div, a, b, li, label,small{
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	-o-user-select:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -moz-tap-highlight-color:rgba(0,0,0,0); 
+}
+html,body{
+    /* overflow-x: hidden; */
+	/* position: relative; */
+	/* height:100%; */
+	/* overflow: hidden; */
+	/*min-height:480px;*/
+	/* width: 100%;
+	min-height: 100%; */
+}
+html{
+	/* position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%; */
+}
+.page{
+	position: absolute;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	overflow: hidden;
+}
+
+
+a{-webkit-tap-highlight-color: transparent;}
+
+.clear:after{ content: ""; display: block; clear: both;}
+.fl{ float: left;}
+.fr{ float: right;}
+
+input[type="text"],input[type="password"],input[type="number"],input[type="button"],select,textarea{
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		appearance:none; 
+		outline:none; 
+		-webkit-tap-highlight-color:rgba(0,0,0,0);
+		-moz-tap-highlight-color:rgba(0,0,0,0); 
+		border-radius:0;
+  }
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]::-moz-inner-spin-button,
+input[type=number]::-moz-outer-spin-button {
+    -moz-appearance: none;
+    margin: 0;
+}
+
+input::-webkit-input-placeholder{
+    font-weight: 100;
+    color: #c4c4c5;
+}
+
+[v-cloak]{display:none}
+
+/*重写全局的mint-ui样式*/
+
+.mint-msgbox{
+  border-radius:10px !important;
+}
+
+

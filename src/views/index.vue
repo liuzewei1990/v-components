@@ -4,47 +4,48 @@
                 <h1>{{ msg }}</h1>
                 <h2>Essential Links</h2>
 
-                <button @click="showActionsheet=true">show ios</button>
+                <Button mini recta @click.native.native="showActionsheet=true">show ios</Button>
                 <Actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
                 </Actionsheet>
 
-                <button @click="showActionsheet1=true">show ios header show-cancel</button>
+                <Button mini recta @click.native.native="showActionsheet1=true">show ios header show-cancel</Button>
                 <Actionsheet theme="ios" :show-cancel="true" cancel-text="关闭" v-model="showActionsheet1" :menus="menus1" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
                         <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
                 </Actionsheet>
 
-                <button @click="showActionsheet2=true">show android header</button>
+                <Button mini recta @click.native="showActionsheet2=true">show android header</Button>
                 <Actionsheet theme="android" v-model="showActionsheet2" :menus="menus1" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">
                         <p class="actionsheet-header" slot="header" style="text-align:center;">请选择</p>
                 </Actionsheet>
 
-                <button @click="showActionsheet3=true">show android</button>
+                <Button mini recta @click.native="showActionsheet3=true">show android</Button>
                 <Actionsheet theme="android" v-model="showActionsheet3" :menus="menus" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close"></Actionsheet>
 
-                <button @click="showPopup1=true">show bottom Popup</button>
+                <Button mini recta @click.native="showPopup1=true">show bottom Popup</Button>
                 <Popup v-model="showPopup1" position="bottom" height="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
                         <p>内容</p>
                 </Popup>
-                <button @click="showPopup2=true">show top Popup</button>
+                <Button mini recta @click.native="showPopup2=true">show top Popup</Button>
                 <Popup v-model="showPopup2" position="top" height="140px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
                         <p>内容</p>
                 </Popup>
-                <button @click="showPopup3=true">show left Popup</button>
+                <Button mini recta @click.native="showPopup3=true">show left Popup</Button>
                 <Popup v-model="showPopup3" position="left" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
                         <p>内容</p>
                 </Popup>
-                <button @click="showPopup4=true">show right Popup</button>
+                <Button mini recta @click.native="showPopup4=true">show right Popup</Button>
                 <Popup v-model="showPopup4" position="right" width="240px" :show-mask="true" :hide-on-blur="true" :is-transparent="false" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
                         <p>内容</p>
                 </Popup>
 
-                <button @click="showToast">show toast</button>
-                <button @click="iosAlert">show iosAlert</button>
-                <button @click="iosConfirm">show iosConfirm</button>
-                <button @click="iosPrompt">show iosPrompt</button>
-                <button @click="iosRemind">show iosRemind</button>
+                <Button mini recta @click.native="showToast">show toast</Button>
+                <Button mini recta @click.native="iosAlert">show iosAlert</Button>
+                <Button mini recta @click.native="iosModel">show iosModel</Button>
+                <Button mini recta @click.native="iosConfirm">show iosConfirm</Button>
+                <Button mini recta @click.native="iosPrompt">show iosPrompt</Button>
+                <Button mini recta @click.native="iosRemind">show iosRemind</Button>
 
-                <button @click="showMaskBox">show MaskBox</button>
+                <Button mini recta @click.native="showMaskBox">show MaskBox</Button>
                 <MaskBox v-model="maskBox" :show-loading="maskBoxLoading" @on-show="ModalHelper.open" @on-hide="ModalHelper.close">
                         <img width="100" :src="IMG_DEMO" alt="">
                 </MaskBox>
@@ -686,6 +687,16 @@ export default {
                                 placeholder: '',
                                 cancelText: '取消',
                                 okText: '确认',
+                                remindDuration: 650,
+                                appendChildClass: "",
+                        })
+                },
+                iosModel() {
+                        this.$iosAlert({
+                                text: "本节的内容会在上期搭建的框架基础上进行数据的填充，顺便回顾之前介绍过的插值表达式，本节的内容会在上期搭建的框架基础上进行数据的填充，顺便回顾之前介绍过的插值表达式，属性绑定等知识，本节的数据只是在组件中模拟数据，后面会有专门的章节讲解如何从服务器获取数据。本节的内容会在上期搭建的框架基础上进行数据的填充，顺便回顾之前介绍过的插值表达式，属性绑定等知识，本节的数据只是在组件中模拟数据，后面会有专门的章节讲解如何从服务器获取数据。本节的数据只是在组件中模拟数据，后面会有专门的章节讲解如何从服务器获取数据。",
+                                input: false,
+                                placeholder: '',
+                                okText: '知道了',
                                 remindDuration: 650,
                                 appendChildClass: "",
                         })

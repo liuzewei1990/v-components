@@ -21,10 +21,5 @@ export default new Router({
                         path: '/loadmore',
                         component: require('./views/loadmore.vue').default
                 },
-                {
-                        name: 'dateTime',
-                        path: '/dateTime',
-                        component: require('./views/dateTime.vue').default
-                },
         ]
 })

@@ -400,7 +400,7 @@ import { Tab, TabItem } from '../components/v-tab';
 import Header from '../components/v-header';
 import Number from '../components/v-number';
 import MaskBox from '../components/v-mask-box';
-import DateTime from 'vue-date-time-m';
+import DateTime from '../components/v-date-time';
 import City from '../components/v-city';
 import cityData from '../components/v-city/citydata.json';
 import CityPopup from '../components/v-city-popup';
@@ -420,7 +420,7 @@ import KeyboardPopup from '../components/v-keyboard-popup';
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,

@@ -1,6 +1,6 @@
 # v-components
 
-[DEMO](http://htmlpreview.github.io/?https://github.com/liuzewei1990/v-components/blob/master/index.html)
+[DEMO](http://59.110.152.162/v-components/#/)
 
 > A Vue.js project
 

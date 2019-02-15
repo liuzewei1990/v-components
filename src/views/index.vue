@@ -380,7 +380,11 @@
                 <Keyboard ref="key1" type="number" v-model="money1" :fixed="false" :maxLength="maxLength" confirmText="确认" @confirm="confirmPay"></Keyboard>
                 <br>
                 <br>
-
+                <br>
+                <br>
+                <Cell title="数字动画" style="text-align:center;margin-top:50px;"></Cell>
+                <Countup :start-val="0" :end-val="1388.08" :duration="2" :decimals="2" :start="doStart" class="countup"></Countup>
+                <Button type="default" plain @click.native="doStart = true">开始</Button>
         </div>
 </template>
 
@@ -417,11 +421,12 @@ import infiniteScroll from './infiniteScroll.vue'
 import LoadmorePage from './loadmore.vue'
 import { Keyboard, KeyboardInput } from '../components/v-keyboard';
 import KeyboardPopup from '../components/v-keyboard-popup';
+import Countup from "../components/v-countup";
 
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,
@@ -663,7 +668,8 @@ export default {
                         maxMoney: 99999,
                         money1: "",
                         maxLength: '6',
-                        focus: true
+                        focus: true,
+                        doStart: false,
                 }
         },
         watch: {
@@ -931,5 +937,9 @@ export default {
         height: 300px;
         overflow-x: hidden;
         overflow-y: auto;
+}
+.countup {
+        font-size: 24px;
+        color: #ff9700;
 }
 </style>

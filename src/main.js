@@ -35,6 +35,7 @@ Vue.prototype.ModalHelper = (function (bodyCls) {
                         document.body.classList.remove(bodyCls);
                         // scrollTop lost after set position:fixed, restore it back.
                         document.scrollingElement.scrollTop = scrollTop;
+                        document.body.style.top = "auto";
                 }
         };
 })('modal-open');

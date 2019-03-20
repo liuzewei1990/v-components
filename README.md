@@ -1,6 +1,6 @@
 # v-components
 
-[DEMO](http://59.110.152.162/v-components/#/)
+[DEMO](http://liuup.com/v-components)
 
 > A Vue.js project
 

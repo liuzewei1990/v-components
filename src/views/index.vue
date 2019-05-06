@@ -385,6 +385,16 @@
                 <Cell title="数字动画" style="text-align:center;margin-top:50px;"></Cell>
                 <Countup :start-val="0" :end-val="1388.08" :duration="2" :decimals="2" :start="doStart" class="countup"></Countup>
                 <Button type="default" plain @click.native="doStart = true">开始</Button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <Lottery ref="Lottery" :lotteryData="lotteryData"></Lottery>
+                <Button @click.native="$refs.Lottery.ceshi">开始</Button>
+                <Button @click.native="$refs.Lottery.init">初始化</Button>
+                <Button @click.native="$refs.Lottery.turn">翻牌</Button>
+                <Button @click.native="$refs.Lottery.show">明牌</Button>
+                <Button @click.native="$refs.Lottery.shuffle">洗牌</Button>
         </div>
 </template>
 
@@ -422,11 +432,11 @@ import LoadmorePage from './loadmore.vue'
 import { Keyboard, KeyboardInput } from '../components/v-keyboard';
 import KeyboardPopup from '../components/v-keyboard-popup';
 import Countup from "../components/v-countup";
-
+import Lottery from "../components/v-lottery"
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,
@@ -670,6 +680,51 @@ export default {
                         maxLength: '6',
                         focus: true,
                         doStart: false,
+                        lotteryData:[{
+                                id: 1,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/2773e125-bd02-4f84-8691-8a7e44cc85d4.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 2,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/92e126b9-e304-48f7-9937-f42c92026b5c.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 3,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/47b41c52-a097-4c75-9ee3-21882f4f6dfe.jpg",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 4,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/eab332f8-5bec-42b7-9f64-82a2ff009e75.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 5,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/24d34cf5-5f1b-493c-89e6-dcc8eaea154c.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 6,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/65413cfe-8a6a-4fb9-8cc7-67382f23fb55.jpg",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 7,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/443c9e09-061b-4ff7-bccb-2b22bc3ab02d.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 8,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/be855646-caf5-4206-8383-0b3d66d10239.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        },
+                        {
+                                id: 9,
+                                front_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/05092963-6f47-4652-92d5-83e2e9262c21.png",
+                                back_img: "https://finsuit.oss-cn-beijing.aliyuncs.com/CJ/f3d6e8c7-96d8-4084-bfd2-4fc4063c4ff7.jpg",
+                        }]
                 }
         },
         watch: {
@@ -874,6 +929,9 @@ export default {
                                 }
                         }, 2000);
                 },
+                startLottery(){
+                        this.$refs.Lottery.turn();
+                }
         }
 }
 </script>

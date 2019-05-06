@@ -184,6 +184,7 @@ export default {
 <style lang="less" scoped>
 .flip-list-move {
   transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
 }
 
 .box {
@@ -195,6 +196,7 @@ export default {
   flex-wrap: wrap;
   background: #ccc;
   perspective: 800px;
+  -webkit-perspective: 800px;
 }
 
 .box .shuffle {
@@ -226,10 +228,12 @@ export default {
   -webkit-animation-fill-mode: both;
 
   position: relative;
-  -webkit-transform-style: preserve-3d;
+
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 
   transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 
 .box .item img,
@@ -243,15 +247,18 @@ export default {
 
 .box .item .front {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
 }
 
 .box .item .back {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
   z-index: -1;
 }
 
 .box .checkd {
   box-shadow: inset 0px 0px 10px 3px #0666fc;
+  -webkit-box-shadow: inset 0px 0px 10px 3px #0666fc;
 }
 
 .box .startBtn {
@@ -261,16 +268,29 @@ export default {
 
 .box .init {
   animation: init 0.6s;
+  -webkit-animation: init 0.6s;
 }
 .box .turn {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 .box .loading {
   animation: zhuan 0.5s linear;
+  -webkit-animation: zhuan 0.5s linear;
 }
 
 @keyframes zhuan {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes zhuan {
   from {
     transform: rotateY(0deg);
   }

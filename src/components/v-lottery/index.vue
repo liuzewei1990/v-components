@@ -6,10 +6,11 @@
         <!-- 3d翻牌 -->
         <div class="item" :class="[{'turn':item.isTurn},{'loading':item.loading},{'infinite':item.loading}]" >
           <img class="back" :src="item.back_img" alt key="back">
-          <img class="front" :src="item.front_img" alt key="front">
+          <img class="front" v-show="!item.isTurnEnd" :src="item.front_img" alt key="front">
+          <!-- <img class="front" :src="item.isTurnEnd ? item.back_img : item.front_img" alt key="front"> -->
         </div>
         <!-- 中奖特效 -->
-        <div class="item shadow" :class="{'checkd':item.checkd}"></div>
+        <div class="item shadow checkd" v-show="item.checkd"></div>
       </div>
     </transition-group>
   </div>
@@ -50,6 +51,7 @@ export default {
         lottery["isTurn"] = false;
         lottery["checkd"] = false;
         lottery["loading"] = false;
+        lottery["isTurnEnd"] = false;
 
         this.lotteryList.push(lottery);
 
@@ -66,11 +68,13 @@ export default {
         this.awaitTime(50 * index)
           .then(() => {
             lottery["isTurn"] = true;
-            return this.awaitTime(200 / 2);
+            return this.awaitTime(200);
           })
           .then(() => {
             // 需要将animation动画移除，否则洗牌时 会影响 v-move 的特性
             // lottery["animation"] = "";
+            
+            lottery["isTurnEnd"] = true;
           });
       });
     },
@@ -121,10 +125,14 @@ export default {
     // 明牌
     show() {
       this.lotteryList.forEach((lottery, index) => {
-        this.awaitTime(10 * index).then(() => {
-          lottery["isTurn"] = false;
-          return this.awaitTime(2000 / 2);
-        });
+        // this.awaitTime(100 * index).then(() => {
+          lottery["isTurnEnd"] = false;
+          this.$nextTick(()=>{
+
+            lottery["isTurn"] = false;
+          })
+          
+        // });
       });
     },
 
@@ -135,8 +143,8 @@ export default {
           
         this.transitionName = "";
         const A = {...this.lotteryList[index]};
+        // lottery.front_img = lottery.back_img;
         lottery.loading = this.isFlag = true;
-        lottery.front_img = lottery.back_img;
 
         this.api().then(dataId => {
 
@@ -145,13 +153,16 @@ export default {
             this.lotteryList[index] = this.lotteryList[findIndex];
             this.lotteryList[findIndex] = A;
 
-            this.lotteryList[index].isTurn = this.lotteryList[index].isTurn = false;
+            this.lotteryList[index].isTurn = this.lotteryList[index].loading = this.lotteryList[index].isTurnEnd = false;
             this.lotteryList[index].checkd = true;
 
+            return this.awaitTime(1000)
+
+        }).then(()=>{
+          
             // 明牌
             this.show();
-
-        });
+        })
       }
     },
 
@@ -232,8 +243,16 @@ export default {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 
+
   transition: 0.5s;
   -webkit-transition: 0.5s;
+
+  // 开启硬件加速
+  -webkit-transform: translate3d(0,0,0); 
+  -moz-transform: translate3d(0,0,0); 
+  -ms-transform: translate3d(0,0,0); 
+  -o-transform: translate3d(0,0,0); 
+  transform: translate3d(0,0,0);
 }
 
 .box .item img,
@@ -243,17 +262,24 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
+    
+
 }
 
 .box .item .front {
   transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
+  
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+  -moz-backface-visibility:hidden; 	/* Firefox */
+  -ms-backface-visibility:hidden; 	/* Internet Explorer */
 }
 
 .box .item .back {
   transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
-  z-index: -1;
+  
 }
 
 .box .checkd {

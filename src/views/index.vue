@@ -159,7 +159,7 @@
                                 <Media :pic="item.imgUrl" :title="item.title" :desc="item.desc"></Media>
                         </SwiperItem>
                 </Swiper>
-                <Swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
+                <Swiper auto height="30px" :loop="true" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
                         <SwiperItem>
                                 <p>义务爱了 完成传奇世界H5-王者归来任务 获得20金币</p>
                         </SwiperItem>
@@ -179,6 +179,9 @@
                                 <p>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</p>
                         </SwiperItem>
                 </Swiper>
+                
+                <span style="font-size:13px;">以下是transition-group版，几行代码即可实现</span>
+                <MsgScroll class="text-scroll"></MsgScroll>
                 <br>
                 <br>
                 <br>
@@ -395,6 +398,11 @@
                 <Button @click.native="$refs.Lottery.turn">翻牌</Button>
                 <Button @click.native="$refs.Lottery.show">明牌</Button>
                 <Button @click.native="$refs.Lottery.shuffle">洗牌</Button>
+                <br>
+                <br>
+                <br><br>
+                <br>
+
         </div>
 </template>
 
@@ -433,10 +441,11 @@ import { Keyboard, KeyboardInput } from '../components/v-keyboard';
 import KeyboardPopup from '../components/v-keyboard-popup';
 import Countup from "../components/v-countup";
 import Lottery from "../components/v-lottery"
+import MsgScroll from "../components/v-msg-scroll";
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery,MsgScroll },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,

@@ -27,6 +27,7 @@ export default {
       lotteryList: [],
       // 点击抽奖时只可点击一次   
       isFlag:false,
+      isClick:false,
       transitionName:""
     };
   },
@@ -45,6 +46,7 @@ export default {
     init() {
       this.lotteryList = [];
       this.isFlag = false;
+      this.isClick = false;
       this.transitionName = "flip-list";
       this.lotteryData.forEach((data, index) => {
         let lottery = { ...data };
@@ -118,7 +120,9 @@ export default {
         .then(() => {
           this.lotteryList = _.shuffle(this.lotteryList);
           return this.awaitTime(200);
-        });
+        }).then(()=>{
+          this.isClick = true;
+        })
     },
 
     
@@ -138,6 +142,7 @@ export default {
 
     // 抽奖
     selectLottery($event, lottery,index) {
+      if(this.isClick === false) return;
 
       if (lottery.isTurn && lottery.loading === false && !this.isFlag) {
           
@@ -156,7 +161,7 @@ export default {
             this.lotteryList[index].isTurn = this.lotteryList[index].loading = this.lotteryList[index].isTurnEnd = false;
             this.lotteryList[index].checkd = true;
 
-            return this.awaitTime(1000)
+            return this.awaitTime(800)
 
         }).then(()=>{
           
@@ -176,7 +181,7 @@ export default {
     },
 
     ceshi(){
-        this.awaitTime(10).then(()=>{
+        this.awaitTime(0).then(()=>{
             this.init();
             return this.awaitTime(1000);
         }).then(()=>{

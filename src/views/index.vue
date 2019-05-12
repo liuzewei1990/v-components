@@ -393,11 +393,11 @@
                 <br>
                 <br>
                 <Lottery ref="Lottery" :lotteryData="lotteryData"></Lottery>
-                <Button @click.native="$refs.Lottery.ceshi">开始</Button>
-                <Button @click.native="$refs.Lottery.init">初始化</Button>
+                <Button @click.native="$refs.Lottery.ceshi">测试</Button>
+                <!-- <Button @click.native="$refs.Lottery.init">初始化</Button>
                 <Button @click.native="$refs.Lottery.turn">翻牌</Button>
                 <Button @click.native="$refs.Lottery.show">明牌</Button>
-                <Button @click.native="$refs.Lottery.shuffle">洗牌</Button>
+                <Button @click.native="$refs.Lottery.shuffle">洗牌</Button> -->
                 <br>
                 <br>
                 <br><br>

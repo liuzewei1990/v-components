@@ -1,7 +1,7 @@
 <template>
   <div class="msg-scroll">
     <transition-group tag="div" class="msg-scroll-box">
-      <p v-for="(item,index) in list" :key="item">{{item.msg}}</p>
+      <p v-for="(item,index) in list" :key="item.msg">{{item.msg}}</p>
     </transition-group>
   </div>
 </template>

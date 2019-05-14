@@ -400,6 +400,7 @@
                 <Button @click.native="$refs.Lottery.shuffle">洗牌</Button> -->
                 <br>
                 <br>
+                <LotteryGongge></LotteryGongge>
                 <br><br>
                 <br>
 
@@ -442,10 +443,11 @@ import KeyboardPopup from '../components/v-keyboard-popup';
 import Countup from "../components/v-countup";
 import Lottery from "../components/v-lottery"
 import MsgScroll from "../components/v-msg-scroll";
+import LotteryGongge from "../components/v-lottery-gongge";
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery,MsgScroll },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery,MsgScroll,LotteryGongge },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,

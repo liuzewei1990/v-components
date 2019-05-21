@@ -1,10 +1,9 @@
 <template>
     <div>
 
-        <div id="example1"></div>
-        父组件
-        <div id="example2"></div>
-        <AsyncComponent2 v-if="show"></AsyncComponent2>
+        <div id="postion-A"></div>
+        <div>抽奖模块</div>
+        <div id="positon-B"></div>
     </div>
 </template>
 
@@ -37,23 +36,22 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            console.log("AsyncComponent1", AsyncComponent1);
-
-            const Constructor = Vue.extend(AsyncComponent1);
-
-            console.log("Constructor", Constructor);
-
-            const example1 = new Constructor();
-
-            console.log("example1", example1);
-
-            example1.$mount("#example2")
+            const V = "A";
+            if (V == "A") {
+                this.asyncComponentMount(AsyncComponent1, "#postion-A");
+            } else {
+                this.asyncComponentMount(AsyncComponent1, "#postion-B");
+            }
         }, 2000);
+    },
 
-        setTimeout(() => {
-            this.show = true;
-        }, 3000);
-
+    methods: {
+        asyncComponentMount(Component, id) {
+            const Constructor = Vue.extend(Component);
+            const example = new Constructor();
+            example.$mount(id)
+            example.v = "111";
+        }
     }
 }
 </script>

@@ -4,8 +4,11 @@
 
 <script>
 export default {
-    created() {
-        console.log("asyncComponent-1")
+    props: {
+        v: String
+    },
+    mounted() {
+        console.log("asyncComponent-1", this.v)
     },
 }
 </script>

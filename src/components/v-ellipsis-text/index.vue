@@ -1,6 +1,6 @@
 <template>
   <!-- 答案解析 -->
-  <div class="ellipsis-text-box">
+  <div class="ellipsis-text-box" @click="topicDescIsHidden = !topicDescIsHidden">
     <!-- 正本 -->
     <p class="ellipsis-text" ref="ellipsis-text" :class="[{'ellipsis-text-is-hidden':topicDescIsHidden},`ellipsis-text-clamp-${clamp}`]">
       {{text}}
@@ -15,7 +15,7 @@
       我是占位符用来获取两行文本的高度我是占位符用来获取两行文本的高度我是占位符用来获取两行文本的高度
     </p>
     <!-- 展开按钮 -->
-    <i class="ellipsis-text-icon" v-show="isShowEllipsisTextBtn" :class="{'ellipsis-text-icon-flag':!topicDescIsHidden}" @click="topicDescIsHidden = !topicDescIsHidden"></i>
+    <i class="ellipsis-text-icon" v-show="isShowEllipsisTextBtn" :class="{'ellipsis-text-icon-flag':!topicDescIsHidden}"></i>
   </div>
 
 </template>

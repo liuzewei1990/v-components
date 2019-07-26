@@ -12,28 +12,13 @@ export default {
     return {
       list: [
         {
-          msg: "哪里看了看收藏发大水出生地吃是1"
+          msg: "零哥章魚 完成传奇世界H5-王者归来任务 获得30金币"
         },
         {
-          msg: "哪里看了看收藏发大水出生地吃是2"
+          msg: "做迎而為 兑换【饿了么】畅享美食红包 消耗20金币"
         },
         {
-          msg: "哪里看了看收藏发大水出生地吃是3"
-        },
-        {
-          msg: "哪里看了看收藏发大水出生地吃是4"
-        },
-        {
-          msg: "哪里看了看收藏发大水出生地吃是5"
-        },
-        {
-          msg: "哪里看了看收藏发大水出生地吃是6"
-        },
-        {
-          msg: "哪里看了看收藏发大水出生地吃是7"
-        },
-        {
-          msg: "哪里看了看收藏发大水出生地吃是8"
+          msg: "基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币"
         }
       ]
     };
@@ -49,7 +34,7 @@ export default {
         let _cache = this.list[0];
         this.list.shift();
         this.list.push(_cache);
-        setTimeout(this.play,2500)
+        setTimeout(this.play, 2000)
       });
     }
   }
@@ -67,7 +52,7 @@ export default {
 }
 
 .v-move {
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 .msg-scroll-box p:nth-last-child(1) {
   visibility: hidden;

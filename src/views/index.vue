@@ -182,6 +182,7 @@
                 
                 <span style="font-size:13px;">以下是transition-group版，几行代码即可实现</span>
                 <MsgScroll class="text-scroll"></MsgScroll>
+                <MsgScrollX class="text-scroll" text="荧光屏文字荧光屏文字荧光屏文字荧光屏文字荧光屏文字荧光屏文字1" :nbspNum="50"></MsgScrollX>
                 <br>
                 <br>
                 <br>
@@ -392,6 +393,7 @@
                 <br>
                 <br>
                 <br>
+                <Cell title="翻拍抽奖" style="text-align:center;margin-top:50px;"></Cell>
                 <Lottery ref="Lottery" :lotteryData="lotteryData"></Lottery>
                 <Button @click.native="$refs.Lottery.ceshi">测试</Button>
                 <!-- <Button @click.native="$refs.Lottery.init">初始化</Button>
@@ -400,8 +402,26 @@
                 <Button @click.native="$refs.Lottery.shuffle">洗牌</Button> -->
                 <br>
                 <br>
+                <Cell title="九宫格抽奖" style="text-align:center;margin-top:50px;"></Cell>
                 <LotteryGongge></LotteryGongge>
-                <br><br>
+                <br>
+                <br>
+                <br>
+                
+                <Cell title="文本溢出-没有溢出时不显示展开按钮" style="text-align:center;margin-top:50px;"></Cell>
+                <EllipsisText clamp="2" text="文本溢出不足2行时文本溢出不足2行时文本溢出不足2行时文本溢出不足2行时"></EllipsisText>
+                <Cell title="文本溢出-1行" style="text-align:center;margin-top:5px;"></Cell>
+                <EllipsisText clamp="1" text="文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出"></EllipsisText>
+                <Cell title="文本溢出-2行" style="text-align:center;margin-top:5px;"></Cell>
+                <EllipsisText clamp="2" text="文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出"></EllipsisText>
+                <Cell title="文本溢出-3行" style="text-align:center;margin-top:5px;"></Cell>
+                <EllipsisText clamp="3" text="文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出"></EllipsisText>
+                <Cell title="文本溢出-4行" style="text-align:center;margin-top:5px;"></Cell>
+                <EllipsisText clamp="4" text="文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出"></EllipsisText>
+                <Cell title="文本溢出-5行" style="text-align:center;margin-top:5px;"></Cell>
+                <EllipsisText clamp="5" text="文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出文本溢出"></EllipsisText>
+                <br>
+                <br>
                 <br>
 
         </div>
@@ -443,11 +463,13 @@ import KeyboardPopup from '../components/v-keyboard-popup';
 import Countup from "../components/v-countup";
 import Lottery from "../components/v-lottery"
 import MsgScroll from "../components/v-msg-scroll";
+import MsgScrollX from "../components/v-msg-scroll-x";
 import LotteryGongge from "../components/v-lottery-gongge";
+import EllipsisText from "../components/v-ellipsis-text";
 
 export default {
         name: 'app',
-        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery,MsgScroll,LotteryGongge },
+        components: { Actionsheet, Cell, Button, Badge, Checker, CheckerItem, Grid, GridItem, Popup, LoadMore, Media, Swiper, SwiperItem, Goods, Tab, TabItem, Header, Number, MaskBox, DateTime, City, CityPopup, CheckIcon, infiniteScroll, LoadmorePage, Keyboard, KeyboardInput, KeyboardPopup, Countup,Lottery,MsgScroll,MsgScrollX,LotteryGongge,EllipsisText },
         data() {
                 return {
                         IMG_DEMO: IMG_DEMO,

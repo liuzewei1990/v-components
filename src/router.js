@@ -25,6 +25,11 @@ export default new Router({
             name: 'asyncComponent',
             path: '/asyncComponent',
             component: require('./views/asyncComponent/index.vue').default
+        },
+        {
+            name: 'waterfall',
+            path: '/waterfall',
+            component: require('./views/waterfall.vue').default
         }
     ]
 })

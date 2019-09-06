@@ -159,9 +159,6 @@ class Swiper {
             let distanceY = me._move.y - me._start.y
             let distance = distanceY
             let noScrollerY = Math.abs(distanceX) > Math.abs(distanceY)
-
-            let isY = Math.abs(distanceY) < 5;
-
             if (me._options.direction === 'horizontal' && noScrollerY) {
                 distance = distanceX
             }
@@ -169,21 +166,11 @@ class Swiper {
             if (!this._options.loop && (this._current === this.count - 1 || this._current === 0)) {
                 distance = distance / 3
             }
-
-
-            if (me._options.direction === 'horizontal') {
-                /* 只针对水平滑动有效 */
-                if ((((me._options.minMovingDistance && Math.abs(distance) > 0) || !me._options.minMovingDistance) && noScrollerY && isY) || me._isMoved) {
-                    me._setTransform(distance)
-                }
-                noScrollerY && isY && e.preventDefault()
-            } else {
-                /* 只针对垂直滑动有效 */
-                if ((((me._options.minMovingDistance && Math.abs(distance) > 0) || !me._options.minMovingDistance) && noScrollerY) || me._isMoved) {
-                    me._setTransform(distance)
-                }
-                noScrollerY && e.preventDefault()
+            if ((((me._options.minMovingDistance && Math.abs(distance) >= me._options.minMovingDistance) || !me._options.minMovingDistance) && noScrollerY) || me._isMoved) {
+                me._setTransform(distance)
             }
+
+            noScrollerY && e.preventDefault()
         }
 
         me.touchendHandler = (e) => {

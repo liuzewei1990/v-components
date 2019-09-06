@@ -15,10 +15,10 @@
 
 <script>
 // 下拉加载更多指令
-import infiniteScroll from '../directives/vue-infinite-scroll';
-import LoadMore from "../components/v-load-more";
-import Header from '../components/v-header';
-import Media from "../components/v-media";
+import infiniteScroll from '../../directives/vue-infinite-scroll';
+import LoadMore from "../../components/v-load-more";
+import Header from '../../components/v-header';
+import Media from "../../components/v-media";
 export default {
   directives: { infiniteScroll, },
   components: { LoadMore, Header, Media },
@@ -70,6 +70,8 @@ export default {
     },
     // 初始化数据库
     initDB() {
+      console.log("init db");
+
       for (let index = 0; index < 99; index++) {
         this.DB.push(index);
       }

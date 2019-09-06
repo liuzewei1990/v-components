@@ -30,6 +30,11 @@ export default new Router({
             name: 'waterfall',
             path: '/waterfall',
             component: require('./views/waterfall.vue').default
+        },
+        {
+            name: 'tabView',
+            path: '/tabView',
+            component: require('./views/tabView/index.vue').default
         }
     ]
 })

@@ -1,8 +1,8 @@
 <template>
         <div id="app">
                 <Header class="header-fix" title="Vue移动端常用组件库" :right-options="{showMore:true}"></Header>
-                <h1>{{ msg }}</h1>
-                <h2>Essential Links</h2>
+                <Button @click.native.native="$router.push('/tabView')">打开tabView</Button>
+                <Button @click.native.native="$router.push('/waterfall')">打开瀑布流</Button>
 
                 <Button mini recta @click.native.native="showActionsheet=true">show ios</Button>
                 <Actionsheet theme="ios" :show-cancel="false" cancel-text="关闭" v-model="showActionsheet" :menus="menus" @on-click-menu="clickMenu" @on-after-show="ModalHelper.open" @on-after-hide="ModalHelper.close">

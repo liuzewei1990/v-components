@@ -26,7 +26,11 @@ export default {
   props: ["isTabShow"],
   watch: {
     isTabShow(v) {
-      console.log("进入", v);
+      if (v)
+        console.log("进入精选商品");
+      else
+        console.log("离开精选商品");
+
     }
   },
   data() {

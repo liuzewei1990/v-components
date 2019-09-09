@@ -5,13 +5,13 @@
       <TabItem :selected="index==0" v-for="(item,index) in tabList" :key="index">{{item.tabName}}</TabItem>
     </Tab>
 
-    <Swiper class="views" height="100%" v-model="bindTabIndex" :auto="false" :showDots="false" :minMovingDistance="500">
+    <Swiper class="views" height="100%" v-model="bindTabIndex" :loop="false" :auto="false" :showDots="false" :minMovingDistance="500">
       <SwiperItem v-for="(item,index) in tabList" :key="index">
         <div class="view">
 
-          <keep-alive>
-            <component v-if="item.isTabLoad" :is="item.tabComponent" :isTabShow="tabList[bindTabIndex].tabComponent === item.tabComponent"></component>
-          </keep-alive>
+          <!-- <keep-alive> -->
+          <component v-if="item.isTabLoad" :is="item.tabComponent" :isTabShow="tabList[bindTabIndex].tabComponent === item.tabComponent"></component>
+          <!-- </keep-alive> -->
 
         </div>
       </SwiperItem>
@@ -47,17 +47,17 @@ export default {
           isTabLoad: false,
         },
         {
-          tabName: "精选",
+          tabName: "新手推荐",
           tabComponent: "view3",
           isTabLoad: false,
         },
         {
-          tabName: "精选水果",
+          tabName: "精选文章",
           tabComponent: "view4",
           isTabLoad: false,
         },
         {
-          tabName: "精选水果1",
+          tabName: "精选知道",
           tabComponent: "view5",
           isTabLoad: false,
         },

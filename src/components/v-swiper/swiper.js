@@ -143,6 +143,7 @@ class Swiper {
     _bind() {
         const me = this
         me.touchstartHandler = (e) => {
+            e.stopPropagation();
             me.stop()
             me._start.x = e.changedTouches[0].pageX
             me._start.y = e.changedTouches[0].pageY
@@ -150,6 +151,7 @@ class Swiper {
             me._isMoved = false
         }
         me.touchmoveHandler = (e) => {
+            e.stopPropagation();
             if (me.count === 1) {
                 return
             }
@@ -187,6 +189,7 @@ class Swiper {
         }
 
         me.touchendHandler = (e) => {
+            e.stopPropagation();
             if (me.count === 1) {
                 return
             }
